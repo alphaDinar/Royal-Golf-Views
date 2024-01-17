@@ -1,0 +1,542 @@
+.headBox {
+  position: relative;
+  width: calc(100% - 40px);
+  height: 77vh;
+  margin: 20px;
+}
+
+.headBox video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.headBoxCon {
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.headBoxConNav {
+  height: 8vh;
+  background: #ffffffcb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  justify-content: space-between;
+}
+
+.headBoxConNav .logoBox {
+  position: relative;
+  height: 90%;
+  width: 90px;
+}
+
+.headBoxConNav svg {
+  display: none;
+}
+
+.headBoxConNav .inquireBox {
+  background: salmon;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.headBoxConNav nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.headBoxConNav nav a {
+  color: black;
+}
+
+.headBoxConNav,
+.headBoxCon article,
+.headBoxConExplore {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.headBoxCon article {
+  display: flex;
+  max-width: 35%;
+  flex-direction: column;
+}
+
+
+
+.headBoxCon article strong {
+  font-size: 2rem;
+  color: white;
+}
+
+.headBoxCon article small {
+  color: white;
+}
+
+.headBoxConExplore {
+  display: flex;
+  gap: 1rem;
+}
+
+.headBoxConExplore p {
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.headBoxConExplore p svg {
+  font-size: 1.2rem;
+  color: var(--pass);
+}
+
+.headBoxConExplore a {
+  background: var(--pass);
+  color: white;
+  padding: 5px 8px;
+  border-radius: 8px;
+}
+
+.featureBox,.aboutBox, .facilityBox, .blogBox, .testimonialBox {
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.featureBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0;
+  padding-bottom: 30px;
+  position: relative;
+  align-items: center;
+}
+
+.featureBox legend:nth-last-child(1),.facilityBox sub:nth-last-child(1){
+  position: absolute;
+  top: 50%;
+  left: calc(10% - 25px);
+}
+.featureBox legend:nth-last-child(2), .facilityBox sub:nth-last-child(2){
+  position: absolute;
+  top: 50%;
+  right: calc(10% - 25px);
+  rotate: 180deg;
+}
+
+.featureBoxSwiper {
+  width: 100%;
+  height: 350px;
+}
+
+.feature {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.feature img {
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.feature a {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  border-radius: 0 0 20px 0;
+  background: rgba(0, 0, 0, 0.566);
+  display: flex;
+  align-items: center;
+  color: rgb(255, 244, 224);
+}
+
+.feature a svg {
+  font-size: 1.5rem;
+}
+
+
+.aboutBox, .blogBox{
+  background: #F8F8FF;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.aboutBox section{
+  height: 45vh;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.aboutBox section .left{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.aboutBox section .left p{
+  color: #4F4F4F;
+}
+.aboutBox section .right{
+  position: relative;
+  height: 100%;
+}
+.aboutBox section .right img{
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.aboutBox article{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.aboutBox article p{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+.aboutBox article p legend{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pass);
+  border-radius: 50%;
+}
+.aboutBox article p legend svg{
+  font-size: 1.3rem;
+  color: white;
+}
+
+.facilityBox, .testimonialBox{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center; 
+  position: relative;
+}
+
+.facilityBoxSwiper {
+  width: 100%;
+  height: 200px;
+}
+.facility{
+  height: calc(100% - 40px);
+  padding: 20px;
+  background: #2A263C;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.facility legend{
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #151129;
+}
+.facility legend svg{
+  font-size: 1.5rem;
+  color: var(--pass);
+}
+.facility span{
+  color: white;
+}
+
+.blogBox header{
+  display: flex;
+  justify-content: space-between;
+}
+.blogBox header button{
+  background: var(--pass);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 40px;
+  cursor: pointer;
+}
+.blogBox section{
+  width: 100%;
+  height: 350px;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 1fr 1fr;
+}
+.blogBox section .left{
+  position: relative;
+  padding: 20px;
+  border-radius: 30px;
+}
+.blogBox section .left article{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.432);
+  width: calc(100% - 80px);
+  padding: 20px;
+  z-index: 100;
+  border-radius: 20px;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  color: white;
+}
+.blogBox section .left p{
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.blogBox section .left p span{
+  display: flex;
+  flex-direction: column;
+}
+.blogBox section .left p span sub{
+  display: block;
+  background: white;
+  width: 100px;
+  height: 1px;
+}
+
+.blogBox section .right{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+.nextBlog{
+  background: rgb(255, 237, 237);
+  border-radius: 20px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  height: calc(100% - 30px);
+  gap: 1.5rem;
+}
+
+.nextBlog .imgBox{
+  height: 100%;
+  min-width: 140px;
+  position: relative;
+}
+
+.nextBlog p{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+} 
+
+
+.testimonialBoxSwiper {
+  width: 100%;
+  padding-bottom: 40px;
+  height: 270px;
+}
+.testimonial{
+  height: calc(100% - 42px);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid darkgray;
+  color: #000;
+}
+.testimonial article{
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+.testimonial article p{
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media all and (max-width:1100px) {
+  .headBoxCon article {
+    max-width: 65%;
+  }
+}
+
+@media all and (max-width:1000px) {
+  .featureBox{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .featureBox legend:nth-last-child(1),.facilityBox sub:nth-last-child(1){
+    display: none;
+  }
+  .featureBox legend:nth-last-child(2), .facilityBox sub:nth-last-child(2){
+    display: none;
+  }
+  
+  .featureBox,.aboutBox, .facilityBox,.blogBox, .testimonialBox {
+    width: calc(100% - 40px);
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .aboutBox section, .blogBox section{
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  .blogBox section .left{
+    height: 300px;
+  }
+  .aboutBox section .left{
+    align-items: center;
+    text-align: center;
+  }
+  .aboutBox section .left h3{
+    align-items: center;
+  }
+  .aboutBox section .right{
+    height: 300px;
+  }
+}
+
+@media all and (max-width:720px) {
+  .headBox {
+    width: calc(100% - 30px);
+    margin: 15px;
+    height: 70vh;
+  }
+
+  .headBoxConNav {
+    width: max-content;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .headBoxConNav svg {
+    display: flex;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: salmon;
+    color: #fff;
+    border-radius: 5px;
+    padding: 6px;
+    cursor: pointer;
+    font-size: 1.8rem;
+  }
+
+  .headBoxConNav nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    top: 10px;
+    border-radius: 0 15px 15px 0;
+    padding: 10px;
+    width: 150px;
+    left: -170px;
+    transition: 0.4s ease;
+    z-index: 1000;
+  }
+
+  .headBoxCon article {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .headBoxConExplore {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .testimonialBoxSwiper {
+    height: 220px;
+  }
+}
+
+
+@media all and (max-width:550px) {
+  .featureBoxSwiper {
+    height: 250px;
+  }
+  .aboutBox, .blogBox{
+    gap: 1rem;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+  .aboutBox article{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media all and (max-width:450px) {
+  .headBox {
+    width: calc(100% - 20px);
+    margin: 10px;
+    height: 50vh;
+  }
+
+  .headBox article strong {
+    font-size: 1.2rem;
+  }
+
+  .headBoxConNav svg {
+    top: 10px;
+    left: 10px;
+  }
+
+  .headBoxConExplore p span {
+    font-size: 1rem;
+  }
+
+  .featureBox {
+    width: calc(100% - 20px);
+    padding: 0 10px 20px 10px;
+  }
+  .featureBoxSwiper {
+    height: 230px;
+  }
+  .facilityBoxSwiper {
+    width: 100%;
+    height: 150px;
+  }
+  .facility{
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media all and (max-width:300px) {
+  .headBox {
+    height: 55vh;
+  }
+}

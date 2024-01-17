@@ -1,0 +1,160 @@
+.footer form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+.footer form input,
+.footer form textarea {
+  font-family: 'Poppins';
+  border: 2px solid wheat;
+  padding: 10px 15px;
+  width: calc(90% - 30px);
+  background: transparent;
+}
+
+.footer form div {
+  width: 100%;
+}
+
+.footer hr {
+  width: 100%;
+  border-top: 2px dotted wheat;
+}
+
+.footer form input::placeholder,
+.footer form textarea::placeholder {
+  color: lightgray;
+}
+
+.footer form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.footer form button {
+  background: white;
+  color: burlywood;
+  width: 90%;
+  font-size: 1.3rem;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.socialBox {
+  display: flex;
+  width: 80%;
+  padding: 0 10%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.socialBox p {
+  width: 20px;
+  height: 40px;
+  border-radius: 50px;
+  border: 1px solid wheat;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialBox p svg {
+  font-size: 1.3rem;
+  color: wheat;
+}
+
+.footer {
+  background: var(--theme);
+  width: 90%;
+  padding: 5vh 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.footer header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer header img {
+  width: 100px;
+}
+
+.footer h4 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-family: 'Poppins';
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.footer header strong {
+  color: wheat;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.footer .mid {
+  display: grid;
+  gap: 5rem;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.footer .mid article {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  flex-direction: column;
+}
+
+.footer .mid article div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer .mid article a {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer .mid article h3 {
+  color: wheat;
+}
+
+.footer .mid article span {
+  color: lightgray;
+}
+
+.footer .mid article small,
+.footer .mid article a small {
+  font-family: 'Poppins';
+  color: white;
+}
+
+@media all and (max-width:850px) {
+  .footer .mid {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .footer .mid article,
+  .footer .mid article div,
+  .footer .mid article div a {
+    text-align: center;
+    align-items: center;
+  }
+}

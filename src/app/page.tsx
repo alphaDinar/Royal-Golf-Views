@@ -484,7 +484,7 @@ const Home = () => {
 
       <section className={styles.testimonialBox}>
         <h4 className='caps'>Testimonials</h4>
-        <p style={{ textAlign: 'center' }}>Don't just take our word for it. Check out what our residents are saying about their experience buying, selling, or renting with Royal Golf Views.</p>
+        <p style={{ textAlign: 'center' }}>Don&apos;t just take our word for it. Check out what our residents are saying about their experience buying, selling, or renting with Royal Golf Views.</p>
         <Swiper
           modules={[EffectFade, Pagination, Autoplay]}
           loop={true}
@@ -500,8 +500,8 @@ const Home = () => {
           className={styles.testimonialBoxSwiper}
         >
 
-          {Array(6).fill().map((el, i) => (
-            <SwiperSlide key={i}>
+          {/* {Array(6).fill().map((el, i) => ( */}
+            <SwiperSlide>
               <Link href='' className={styles.testimonial}>
                 <MdFormatQuote />
                 <span className='cut3'>
@@ -523,7 +523,7 @@ const Home = () => {
 
               </Link>
             </SwiperSlide>
-          ))}
+          {/* ))} */}
         </Swiper>
       </section>
 

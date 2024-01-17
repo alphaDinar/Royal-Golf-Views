@@ -14,10 +14,10 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <header>
+      {/* <header>
         <img src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'} alt="" />
         <h4>ROYAL GOLF VIEWS</h4>
-      </header>
+      </header> */}
       <section className={styles.mid}>
         <article data-aos="fade-up">
           <h3>Apartments</h3>

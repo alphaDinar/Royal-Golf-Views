@@ -39,6 +39,7 @@ const Home = () => {
 
   const handleVideoLoad = () => {
     console.log('here');
+    localStorage.setItem('loaded', '1');
     setIsVideoLoaded(true);
   };
 
@@ -97,7 +98,6 @@ const Home = () => {
 
       if (introVideoRef.current) {
         if (introVideoRef.current.readyState >= 3) {
-          localStorage.setItem('loaded', '1');
           handleVideoLoad();
         }
       }
@@ -265,6 +265,7 @@ const Home = () => {
           autoPlay
           loop
           muted
+          onLoadedMetadata={handleVideoLoad}
           src='https://res.cloudinary.com/dvnemzw0z/video/upload/v1705012575/RGV/intro_euk6tk.mp4'
         />
 

@@ -36,6 +36,13 @@
   -webkit-line-clamp: 3;
 }
 
+h4 sub{
+  height: 3px;
+  width: 50px;
+  display: block;
+  background: black;
+}
+
 .swiperNav{
   width: 40px;
   height: 40px;
@@ -80,11 +87,23 @@ h3 sub{
   gap: 3rem;
 }
 
-.managerForm input{
-  height: 33px;
-  background: black;
+.managerForm{
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.managerForm input, .managerForm textarea{
   width: calc(100% - 30px);
-  border-radius: 10px;
   background: #F2F2F2;
   padding: 5px 15px;
+  border-radius: 10px;
+}
+.managerForm input{
+  height: 33px;
+}
+
+.managerForm textarea{
+  resize: none;
+  height: 90px;
 }

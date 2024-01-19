@@ -1,0 +1,103 @@
+.topNav {
+  position: relative;
+  width: calc(100% - 40px);
+  height: calc(8vh + 40px);
+  margin: 20px;
+}
+.topNav img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.topNavConHolder{
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
+  padding: 17px;
+}
+.topNavCon {
+  width: calc(100% - 50px);
+  height: 8vh;
+  background: #ffffffcb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.topNavCon .logoBox {
+  position: relative;
+  height: 90%;
+  width: 90px;
+}
+
+.topNavCon svg {
+  display: none;
+}
+
+.topNavCon .inquireBox {
+  background: salmon;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.topNavCon nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topNavCon nav a {
+  color: black;
+}
+
+
+@media all and (max-width:720px) {
+  .topNav {
+    width: calc(100% - 30px);
+    /* height: calc(5vh + 40px); */
+    margin: 15px;
+  }
+
+  .topNavCon {
+    /* width: max-content; */
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .topNavCon svg {
+    display: flex;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: salmon;
+    color: #fff;
+    border-radius: 5px;
+    padding: 6px;
+    cursor: pointer;
+    font-size: 1.8rem;
+  }
+
+  .topNavCon nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    top: 10px;
+    border-radius: 0 15px 15px 0;
+    padding: 10px;
+    width: 150px;
+    left: -170px;
+    transition: 0.4s ease;
+    z-index: 1000;
+  }
+}

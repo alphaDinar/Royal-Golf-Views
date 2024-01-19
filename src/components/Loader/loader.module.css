@@ -1,9 +1,65 @@
-.loaderBox{
+.loaderPage{
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
   width: 100%;
   height: 100vh;
+  background: rgba(245, 222, 179, 0.317);
+  background: rgba(255, 255, 255, 0.644);
   background: rgba(0, 0, 0, 0.425);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loaderBox{
+  width: 250px;
+  height: 140px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: wheat;
+  /* background: var(--pass); */
+  flex-direction: column;
+  gap: 1rem;
+  color: white;
+  position: relative;
+}
+
+.logoBox{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: black;
+  border-radius: 50%;
+  top: -25px;
+}
+
+.logoBox img{
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.loader{
+  display: flex;
+  gap: 0.5rem;
+}
+.loader legend{
+  display: block;
+  width: 10px;
+  height: 10px;
+  /* background: black; */
+  border-radius: 50%;
+  background: white;
 }

@@ -15,17 +15,19 @@ import { IoMdShirt } from 'react-icons/io';
 import { IoShirtOutline } from 'react-icons/io5';
 import Footer from '@/components/Footer/Footer';
 import Loader from '@/components/Loader/Loader';
-import { collection, getDocs} from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { fireStoreDB } from '@/firebase/base';
 
 
-interface Post extends Record<string, any>{}
+interface Post extends Record<string, any> { }
 
 const Home = () => {
-  const introVideoRef = useRef<HTMLVideoElement>(null)
+  const introVideoRef = useRef<HTMLVideoElement>(null);
+  const featureImageRef = useRef<Array<HTMLImageElement | null>>([]);
+  // useRef<Array<HTMLImageElement | null>>([]);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [menuToggled, setMenuToggled] = useState(false);
-  const [menuPosition, setMenuPosition] = useState('-170px')
+  const [menuPosition, setMenuPosition] = useState('-170px');
   const gallerySwiper = useRef<{ swiper: any }>({ swiper: null });
   const facilitySwiper = useRef<{ swiper: any }>({ swiper: null });
   const [gallerySlideNum, setGallerySlideNum] = useState(0);
@@ -33,17 +35,18 @@ const Home = () => {
   const [gallerySlideGap, setGallerySlideGap] = useState(25);
   const [posts, setPosts] = useState<Post[]>([]);
 
-  
+
 
   const handleVideoLoad = () => {
+    console.log('here');
     setIsVideoLoaded(true);
   };
 
   const toggleMenu = () => {
-    if(menuToggled){
-      setMenuToggled(false); 
+    if (menuToggled) {
+      setMenuToggled(false);
       setMenuPosition('10px');
-    }else{
+    } else {
       setMenuToggled(true);
       setMenuPosition('-170px');
     }
@@ -54,9 +57,9 @@ const Home = () => {
     setMenuToggled(true);
     setMenuPosition('-170px');
 
-    const getPosts = async ()=>{
+    const getPosts = async () => {
       const postsTemp = (await getDocs(collection(fireStoreDB, '/Categories'))).docs;
-      setPosts(postsTemp.map((el)=> ({id : el.id , ...el.data()}) as Post));
+      setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post));
     };
 
     getPosts();
@@ -88,12 +91,27 @@ const Home = () => {
       }
     }
 
-    if (introVideoRef.current) {
-      if (introVideoRef.current.readyState >= 3) {
-        handleVideoLoad();
-      }
-    }
-  }, [introVideoRef, posts])
+    // if (introVideoRef.current) {
+      // if (introVideoRef.current.readyState >= 3) {
+      // }
+    // }
+    
+
+    setTimeout(()=>{
+      handleVideoLoad();
+      console.log('done')
+    }, 1000)
+    // let featureImageRefChecker = 0;
+    // if(featureImageRef.current){
+    //   featureImageRef.current.forEach((el)=>{
+    //     if(el?.complete){
+    //       featureImageRefChecker += 1;
+    //     }
+    //   })
+    // }
+    // console.log(featureImageRefChecker);
+
+  }, [introVideoRef])
 
 
   const gallerySwiperPrev = () => {
@@ -121,35 +139,35 @@ const Home = () => {
 
   const featureList = [
     {
-      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705049213/RGV/balconySmall_oip8wg.jpg',
+      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695728/RGV/balcony_fyfudq.jpg',
       tag: 'Balcony',
     },
     {
-      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705046489/RGV/feature1Small_iw8r0j.jpg',
+      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/poolView1_srgrq0.jpg',
       tag: 'Poolside',
     },
     {
-      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705047584/RGV/roomSmall_huxblc.jpg',
+      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695725/RGV/bed5_vwwu8w.jpg',
       tag: '3 Bedrooms',
     },
     {
-      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705048061/RGV/frontViewSmall_jvtolq.jpg',
+      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695724/RGV/frontView1_vba9rx.jpg',
       tag: 'Front View',
     },
     {
-      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705049616/RGV/receptionSmall_ibvfqj.jpg',
+      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695725/RGV/commonView1_stspgi.jpg',
       tag: 'Reception',
     },
     {
-      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705050481/RGV/elevatorSmall_sacc6c.jpg',
+      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695723/RGV/elevator_gxwqwn.jpg',
       tag: 'Elevator',
     },
     {
-      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705050274/RGV/DiningSmall_tlwmsp.jpg',
+      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/dining_s4qaop.jpg',
       tag: 'Dining Place',
     },
     {
-      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705050012/RGV/kitchenSmall_oaudqo.jpg',
+      img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695724/RGV/kit1_xkppcj.jpg',
       tag: 'Kitchen',
     },
   ];
@@ -234,7 +252,6 @@ const Home = () => {
 
   return (
     <main>
-
       <section className={styles.headBox}>
         <video
           ref={introVideoRef}
@@ -260,7 +277,7 @@ const Home = () => {
               <MdMenu onClick={toggleMenu} />
               <Link href={'/'}> <span>Home</span> </Link>
               <Link href={'/'}> <span>About Us</span> </Link>
-              <Link href={'/'}> <span>Gallery</span> </Link>
+              <Link href={'/gallery'}> <span>Gallery</span> </Link>
               <Link href={'/'}> <span>Blog</span> </Link>
               <Link href={'/'}> <span>Contact</span> </Link>
               <Link href={'/'} className={styles.inquireBox}> <span>Inquire</span> </Link>
@@ -313,7 +330,9 @@ const Home = () => {
           {featureList.map((item, i) => (
             <SwiperSlide key={i}>
               <div className={styles.feature}>
-                <Image alt='feature1' src={item.img}
+                <Image
+                  ref={(el) => { featureImageRef.current[i] = el }}
+                  alt='feature1' src={item.img}
                   fill
                   sizes='1'
                 />
@@ -343,7 +362,7 @@ const Home = () => {
             </p>
           </div>
           <div className={styles.right}>
-            <Image alt='' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705054672/RGV/introSmall2_jmbzik.jpg'}
+            <Image alt='' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView4_k5coyb.jpg'}
               fill
               sizes='1'
             />
@@ -420,7 +439,7 @@ const Home = () => {
             <Image alt='' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705048061/RGV/frontViewSmall_jvtolq.jpg'}
               fill
               sizes='1'
-              style={{ borderRadius: '20px', objectFit:'cover' }}
+              style={{ borderRadius: '20px', objectFit: 'cover' }}
             />
             <article>
               <span style={{ color: 'wheat' }}>Focuses on features that enhance convenience</span>
@@ -431,14 +450,14 @@ const Home = () => {
               <p>
                 <Image
                   alt='dp'
-                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
+                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'}
                   height={50}
                   width={50}
-                  style={{ borderRadius: '50%', objectFit:'cover' }}
+                  style={{ borderRadius: '50%', objectFit: 'cover' }}
                 />
 
                 <span>
-                  <small>Omar</small>
+                  <small>RGV</small>
                   <sub></sub>
                   <small>8 mins ago</small>
                 </span>
@@ -453,7 +472,7 @@ const Home = () => {
                   sizes='1'
                   src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705048061/RGV/frontViewSmall_jvtolq.jpg'}
                   fill
-                  style={{ borderRadius: '10px', objectFit:'cover'  }}
+                  style={{ borderRadius: '10px', objectFit: 'cover' }}
                 />
               </div>
               <p>
@@ -469,7 +488,7 @@ const Home = () => {
                   sizes='1'
                   src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705048061/RGV/frontViewSmall_jvtolq.jpg'}
                   fill
-                  style={{ borderRadius: '10px', objectFit:'cover' }}
+                  style={{ borderRadius: '10px', objectFit: 'cover' }}
                 />
               </div>
               <p>
@@ -487,7 +506,7 @@ const Home = () => {
         <p style={{ textAlign: 'center' }}>Don&apos;t just take our word for it. Check out what our residents are saying about their experience buying, selling, or renting with Royal Golf Views.</p>
         <Swiper
           modules={[EffectFade, Pagination, Autoplay]}
-          loop={true}
+          // loop={true}
           speed={1000}
           pagination={{
             dynamicBullets: true,
@@ -500,7 +519,6 @@ const Home = () => {
           className={styles.testimonialBoxSwiper}
         >
 
-          {/* {Array(6).fill().map((el, i) => ( */}
             <SwiperSlide>
               <Link href='' className={styles.testimonial}>
                 <MdFormatQuote />
@@ -513,7 +531,7 @@ const Home = () => {
                     src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
                     height={50}
                     width={50}
-                    style={{ borderRadius: '50%', objectFit : 'cover' }}
+                    style={{ borderRadius: '50%', objectFit: 'cover' }}
                   />
                   <p>
                     <strong>Mr. Emmanuel</strong>
@@ -523,7 +541,28 @@ const Home = () => {
 
               </Link>
             </SwiperSlide>
-          {/* ))} */}
+            <SwiperSlide>
+              <Link href='' className={styles.testimonial}>
+                <MdFormatQuote />
+                <span className='cut3'>
+                  What happens when you find the ideal home not just through specs and photos, but through the voices of those who live there? Scroll down and step into a world of fulfilled dreams, happy surprises, and the transformative power of a perfect address
+                </span>
+                <article>
+                  <Image
+                    alt='dp'
+                    src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
+                    height={50}
+                    width={50}
+                    style={{ borderRadius: '50%', objectFit: 'cover' }}
+                  />
+                  <p>
+                    <strong>Mr. Emmanuel</strong>
+                    <small style={{ color: 'darkgray' }}>Businessman</small>
+                  </p>
+                </article>
+
+              </Link>
+            </SwiperSlide>
         </Swiper>
       </section>
 

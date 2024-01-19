@@ -4,6 +4,7 @@ import styles from './footer.module.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
   useEffect(() => {
@@ -13,11 +14,13 @@ const Footer = () => {
   })
 
   return (
-    <footer className={styles.footer}>
-      {/* <header>
-        <img src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'} alt="" />
+    <footer id='footerBox' className={styles.footer}>
+      <header>
+        <div className={styles.logoBox}>
+        <Image fill src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'} alt="" />
+        </div>
         <h4>ROYAL GOLF VIEWS</h4>
-      </header> */}
+      </header>
       <section className={styles.mid}>
         <article data-aos="fade-up">
           <h3>Apartments</h3>

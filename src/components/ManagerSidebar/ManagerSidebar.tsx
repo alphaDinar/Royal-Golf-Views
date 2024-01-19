@@ -1,9 +1,15 @@
+'use client'
 import Image from 'next/image';
 import styles from './managerSidebar.module.css';
 import Link from 'next/link';
 import { MdDescription, MdMessage, MdPhone, MdPowerSettingsNew, MdSend } from 'react-icons/md';
+import { usePathname } from 'next/navigation';
 
 const ManagerSidebar = () => {
+  const pathName = usePathname();
+
+  console.log(pathName);
+
   return ( 
     <section className={styles.sidebar}>
       <header>

@@ -1,0 +1,180 @@
+.galleryCon {
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.galleryCon header{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.galleryCon header button{
+  background: var(--pass);
+  padding: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 1.1rem; */
+  cursor: pointer;
+}
+
+.imgBoxHolder {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 8vh;
+}
+
+.imgBox,
+.imgBox2 {
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+}
+
+.imgBox {
+  grid-template-columns: 1fr 0.5fr 0.5fr;
+}
+
+.imgBox2 {
+  grid-template-columns: 0.5fr 0.5fr 1fr;
+}
+
+
+
+.set1 {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.set1 div,
+.set2 div,
+.set3 div,
+.imgBox4 div {
+  position: relative;
+}
+
+.set1 div {
+  height: calc(50% - 0.5rem);
+}
+
+.set1 div,
+.set1 div img,
+.set2 div,
+.set2 div img,
+.set3 div,
+.set3 div img,
+.imgBox4 div,
+.imgBox4 div img {
+  border-radius: 10px;
+}
+
+.set1 div:nth-child(1) {
+  width: 100%;
+}
+
+.set1 div img,
+.set2 div img,
+.set3 div img,
+.imgBox4 div img {
+  object-fit: cover;
+}
+
+.set1 div:nth-child(2),
+.set1 div:nth-child(3) {
+  width: calc(50% - 0.5rem);
+}
+
+
+.set1,
+.set2,
+.set3 {
+  height: 450px;
+}
+
+.set2 {
+  width: 100%;
+  display: flex;
+}
+
+.set2 div {
+  width: 100%;
+}
+
+
+.set3 {
+  /* border: 2px solid black; */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.imgBox4 {
+  width: 100%;
+  height: 225px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+
+
+@media all and (max-width:1300px) {
+
+  .imgBox,
+  .imgBox2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width:1100px) {
+  .imgBox4 {
+    height: 450px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media all and (max-width:1100px) {
+  .galleryCon {
+    width: calc(100% - 40px);
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+
+
+@media all and (max-width:750px) {
+
+  .imgBox,
+  .imgBox2,
+  .imgBox4 {
+    grid-template-columns: 1fr;
+  }
+
+  .set1,
+.set2,
+.set3 {
+  height: 600px;
+}
+
+.imgBox4 {
+  height: 1200px;
+}
+
+}
+
+@media all and (max-width:550px) {
+  .set1 div:nth-child(2),
+.set1 div:nth-child(3) {
+  width: 100%;
+}
+}

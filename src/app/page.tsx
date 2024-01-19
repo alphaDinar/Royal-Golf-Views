@@ -89,18 +89,25 @@ const Home = () => {
       } else {
         setTestimonialSlideNum(1)
       }
+
+      if(localStorage.getItem('loaded')){
+        handleVideoLoad();
+        console.log('got it')
+      }
+
+      if (introVideoRef.current) {
+        if (introVideoRef.current.readyState >= 3) {
+          localStorage.setItem('loaded', 1);
+          handleVideoLoad();
+        }
+      }
     }
 
-    // if (introVideoRef.current) {
-      // if (introVideoRef.current.readyState >= 3) {
-      // }
-    // }
-    
 
-    setTimeout(()=>{
-      handleVideoLoad();
-      console.log('done')
-    }, 1000)
+
+    // setTimeout(()=>{
+    //   console.log('done')
+    // }, 1000)
     // let featureImageRefChecker = 0;
     // if(featureImageRef.current){
     //   featureImageRef.current.forEach((el)=>{
@@ -519,50 +526,50 @@ const Home = () => {
           className={styles.testimonialBoxSwiper}
         >
 
-            <SwiperSlide>
-              <Link href='' className={styles.testimonial}>
-                <MdFormatQuote />
-                <span className='cut3'>
-                  What happens when you find the ideal home not just through specs and photos, but through the voices of those who live there? Scroll down and step into a world of fulfilled dreams, happy surprises, and the transformative power of a perfect address
-                </span>
-                <article>
-                  <Image
-                    alt='dp'
-                    src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
-                    height={50}
-                    width={50}
-                    style={{ borderRadius: '50%', objectFit: 'cover' }}
-                  />
-                  <p>
-                    <strong>Mr. Emmanuel</strong>
-                    <small style={{ color: 'darkgray' }}>Businessman</small>
-                  </p>
-                </article>
+          <SwiperSlide>
+            <Link href='' className={styles.testimonial}>
+              <MdFormatQuote />
+              <span className='cut3'>
+                What happens when you find the ideal home not just through specs and photos, but through the voices of those who live there? Scroll down and step into a world of fulfilled dreams, happy surprises, and the transformative power of a perfect address
+              </span>
+              <article>
+                <Image
+                  alt='dp'
+                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
+                  height={50}
+                  width={50}
+                  style={{ borderRadius: '50%', objectFit: 'cover' }}
+                />
+                <p>
+                  <strong>Mr. Emmanuel</strong>
+                  <small style={{ color: 'darkgray' }}>Businessman</small>
+                </p>
+              </article>
 
-              </Link>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Link href='' className={styles.testimonial}>
-                <MdFormatQuote />
-                <span className='cut3'>
-                  What happens when you find the ideal home not just through specs and photos, but through the voices of those who live there? Scroll down and step into a world of fulfilled dreams, happy surprises, and the transformative power of a perfect address
-                </span>
-                <article>
-                  <Image
-                    alt='dp'
-                    src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
-                    height={50}
-                    width={50}
-                    style={{ borderRadius: '50%', objectFit: 'cover' }}
-                  />
-                  <p>
-                    <strong>Mr. Emmanuel</strong>
-                    <small style={{ color: 'darkgray' }}>Businessman</small>
-                  </p>
-                </article>
+            </Link>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Link href='' className={styles.testimonial}>
+              <MdFormatQuote />
+              <span className='cut3'>
+                What happens when you find the ideal home not just through specs and photos, but through the voices of those who live there? Scroll down and step into a world of fulfilled dreams, happy surprises, and the transformative power of a perfect address
+              </span>
+              <article>
+                <Image
+                  alt='dp'
+                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
+                  height={50}
+                  width={50}
+                  style={{ borderRadius: '50%', objectFit: 'cover' }}
+                />
+                <p>
+                  <strong>Mr. Emmanuel</strong>
+                  <small style={{ color: 'darkgray' }}>Businessman</small>
+                </p>
+              </article>
 
-              </Link>
-            </SwiperSlide>
+            </Link>
+          </SwiperSlide>
         </Swiper>
       </section>
 

@@ -260,11 +260,12 @@ const Home = () => {
   return (
     <main>
       <section className={styles.headBox}>
-        <Image
+        {/* <Image
+        className={styles.placeholder}
         alt=''
         fill
         src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705704195/RGV/place_dhvsk3.jpg'}
-        />
+        /> */}
         <video
           ref={introVideoRef}
           autoPlay

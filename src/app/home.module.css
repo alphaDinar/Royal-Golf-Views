@@ -10,21 +10,21 @@
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
-  position: relative;
-  z-index: 100;
+  /* position: relative; */
+  /* z-index: 100; */
 }
 
-.headBox img{
+/* .headBox .placeholder{
   object-fit: cover;
   z-index: 10;
   border-radius: 20px;
-}
+} */
 
 .headBoxCon {
   top: 0;
   left: 0;
   position: absolute;
-  z-index: 1000;
+  /* z-index: 1000; */
   height: calc(100% - 40px);
   width: calc(100% - 40px);
   padding: 20px;

@@ -82,7 +82,7 @@ const Gallery = () => {
             </div>
 
             <div data-aos="fade-up">
-              <Image alt='' fill src={' https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView4_k5coyb.jpg'} />
+              <Image alt='' fill src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView4_k5coyb.jpg'} />
               <span style={{ display: 'none' }}>Balcony</span>
             </div>
 

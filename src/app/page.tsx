@@ -97,7 +97,7 @@ const Home = () => {
 
       if (introVideoRef.current) {
         if (introVideoRef.current.readyState >= 3) {
-          localStorage.setItem('loaded', 1);
+          localStorage.setItem('loaded', '1');
           handleVideoLoad();
         }
       }

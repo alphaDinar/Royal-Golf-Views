@@ -260,6 +260,11 @@ const Home = () => {
   return (
     <main>
       <section className={styles.headBox}>
+        <Image
+        alt=''
+        fill
+        src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705704195/RGV/place_dhvsk3.jpg'}
+        />
         <video
           ref={introVideoRef}
           autoPlay
@@ -268,6 +273,7 @@ const Home = () => {
           onLoadedMetadata={handleVideoLoad}
           src='https://res.cloudinary.com/dvnemzw0z/video/upload/v1705012575/RGV/intro_euk6tk.mp4'
         />
+
 
 
         <section className={styles.headBoxCon}>

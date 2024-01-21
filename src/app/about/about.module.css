@@ -1,0 +1,88 @@
+
+.topHeader{
+  width: calc(100% - 40px);
+  margin: 0 20px;
+}
+.topBox{
+  position: relative;
+  width: calc(100% - 40px);
+  margin: 20px;
+  height: 50vh;
+  border-radius: 20px;
+}
+
+.topBox img{
+  object-position: center;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.topBox article{
+  width: 500px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.534);
+  position: absolute;
+  z-index: 100;
+  bottom: -50px;
+  right: 5vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.topBox article strong{
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.infoBox{
+  width: 80%;
+  margin: 80px 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.infoBox article{
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.infoBox article p{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.infoBox article p span{
+  padding: 10px;
+  border: 1px solid darkgray;
+  border-radius: 20px;
+}
+
+@media all and (max-width:1000px){
+  .infoBox{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media all and (max-width:650px){
+  .topBox article{
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    border-radius: 20px;
+    z-index: 100;
+  }
+  .infoBox{
+    width: 95%;
+    margin: 80px 2.5%;
+  }
+}
+

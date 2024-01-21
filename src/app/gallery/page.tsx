@@ -25,7 +25,7 @@ const Gallery = () => {
         <header>
           <h4 className='caps'>Our Gallery <sub></sub></h4>
 
-          <Link href={''}>
+          <Link href={'/slideshow'}>
           <button>Slide show <MdPlayArrow/></button>
           </Link>
         </header>

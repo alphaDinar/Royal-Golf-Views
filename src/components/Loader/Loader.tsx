@@ -5,7 +5,7 @@ const Loader = () => {
     <section className={styles.loaderPage}>
       <div className={styles.loaderBox}>
         <div className={styles.logoBox}>
-          <Image src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'} alt='' fill />
+          <Image src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'} sizes='1' alt='' fill />
         </div>
 
         <strong className='caps'>Royal Golf Views</strong>

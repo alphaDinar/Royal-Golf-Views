@@ -3,15 +3,14 @@ import styles from './home.module.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MdAcUnit, MdArrowBackIos, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdFormatQuote, MdHandshake, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi } from 'react-icons/md';
+import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi } from 'react-icons/md';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css/pagination';
 import 'swiper/css';
 import { GiBarbecue } from 'react-icons/gi';
 import { BsTelephone } from 'react-icons/bs';
 import { TbDeviceCctv, TbFridge } from 'react-icons/tb';
-import { IoMdShirt } from 'react-icons/io';
 import { IoShirtOutline } from 'react-icons/io5';
 import Footer from '@/components/Footer/Footer';
 import Loader from '@/components/Loader/Loader';
@@ -25,7 +24,7 @@ const Home = () => {
   const introVideoRef = useRef<HTMLVideoElement>(null);
   const featureImageRef = useRef<Array<HTMLImageElement | null>>([]);
   // useRef<Array<HTMLImageElement | null>>([]);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [pageLoaded, setPageLoaded] = useState(false);
   const [menuToggled, setMenuToggled] = useState(false);
   const [menuPosition, setMenuPosition] = useState('-170px');
   const gallerySwiper = useRef<{ swiper: any }>({ swiper: null });
@@ -34,14 +33,6 @@ const Home = () => {
   const [testimonialSlideNum, setTestimonialSlideNum] = useState(0);
   const [gallerySlideGap, setGallerySlideGap] = useState(25);
   const [posts, setPosts] = useState<Post[]>([]);
-
-
-
-  const handleVideoLoad = () => {
-    console.log('here');
-    localStorage.setItem('loaded', '1');
-    setIsVideoLoaded(true);
-  };
 
   const toggleMenu = () => {
     if (menuToggled) {
@@ -52,9 +43,25 @@ const Home = () => {
       setMenuPosition('-170px');
     }
   }
+  
+
+  const handleIntroVideoPass = () => {
+    setPageLoaded(true);  
+  }
 
 
   useEffect(() => {
+
+    setTimeout(()=>{
+      handleIntroVideoPass();
+    }, 8000)
+    
+    if (introVideoRef.current) {
+      if (introVideoRef.current.readyState >= 3) {
+        handleIntroVideoPass();
+      }
+    }
+
     setMenuToggled(true);
     setMenuPosition('-170px');
 
@@ -90,34 +97,7 @@ const Home = () => {
       } else {
         setTestimonialSlideNum(1)
       }
-
-      if(localStorage.getItem('loaded')){
-        handleVideoLoad();
-        console.log('got it')
-      }
-
-      if (introVideoRef.current) {
-        if (introVideoRef.current.readyState >= 3) {
-          handleVideoLoad();
-        }
-      }
     }
-
-
-
-    // setTimeout(()=>{
-    //   console.log('done')
-    // }, 1000)
-    // let featureImageRefChecker = 0;
-    // if(featureImageRef.current){
-    //   featureImageRef.current.forEach((el)=>{
-    //     if(el?.complete){
-    //       featureImageRefChecker += 1;
-    //     }
-    //   })
-    // }
-    // console.log(featureImageRefChecker);
-
   }, [introVideoRef])
 
 
@@ -256,7 +236,6 @@ const Home = () => {
 
 
 
-
   return (
     <main>
       <section className={styles.headBox}>
@@ -271,8 +250,8 @@ const Home = () => {
           autoPlay
           loop
           muted
-          onLoadedMetadata={handleVideoLoad}
           src='https://res.cloudinary.com/dvnemzw0z/video/upload/v1705012575/RGV/intro_euk6tk.mp4'
+          onLoadedMetadata={handleIntroVideoPass}
         />
 
 
@@ -291,7 +270,7 @@ const Home = () => {
             <nav style={{ left: menuPosition }}>
               <MdMenu onClick={toggleMenu} />
               <Link href={'/'}> <span>Home</span> </Link>
-              <Link href={'/'}> <span>About Us</span> </Link>
+              <Link href={'/about'}> <span>About Us</span> </Link>
               <Link href={'/gallery'}> <span>Gallery</span> </Link>
               <Link href={'/'}> <span>Blog</span> </Link>
               <Link href={'/'}> <span>Contact</span> </Link>
@@ -350,6 +329,7 @@ const Home = () => {
                   alt='feature1' src={item.img}
                   fill
                   sizes='1'
+                  priority={true}
                 />
                 <Link href={'/'}>
                   <span>{item.tag}</span>
@@ -587,7 +567,7 @@ const Home = () => {
 
       <Footer />
 
-      {isVideoLoaded ? null : <Loader />}
+      {pageLoaded ? null : <Loader />}
     </main>
   );
 }

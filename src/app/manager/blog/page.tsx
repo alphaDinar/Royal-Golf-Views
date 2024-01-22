@@ -10,7 +10,7 @@ interface Post extends Record<string, any> { }
 
 const Blog = async () => {
   const posts: Post[] = (await getDocs(collection(fireStoreDB, 'RGVPosts/'))).docs.map((post) => ({ id: post.id, ...post.data() }));
-  
+
   return (
     <section className="managerPage">
       <ManagerSidebar />
@@ -25,7 +25,7 @@ const Blog = async () => {
               <span>Add Span</span>
             </Link>
             {posts.map((post, i) => (
-              <div className={styles.blog}>
+              <div key={i} className={styles.blog}>
                 <div className={styles.imgBox}>
                   <Image alt="" fill sizes="1" src={post.thumbnail} />
                 </div>

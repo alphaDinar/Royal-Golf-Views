@@ -2,8 +2,12 @@ import ManagerSidebar from "@/components/ManagerSidebar/ManagerSidebar";
 import styles from './manager.module.css';
 import { MdAdd, MdDescription, MdPhone } from "react-icons/md";
 import Link from "next/link";
+import { collection, getDocs } from "firebase/firestore";
+import { fireStoreDB } from "@/firebase/base";
 
-const Manager = () => {
+const Manager = async () => {
+  const postsCounter = (await getDocs(collection(fireStoreDB, 'RGVPosts/'))).size;
+
   return ( 
     <section className="managerPage">
       <ManagerSidebar/>
@@ -22,7 +26,7 @@ const Manager = () => {
             <div>
               <MdDescription/>
               <span>Posts</span>
-              <strong>49</strong>
+              <strong>{postsCounter}</strong>
             </div>
             <div>
               <MdPhone/>

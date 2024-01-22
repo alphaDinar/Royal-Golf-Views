@@ -1,0 +1,40 @@
+.blogs{
+  gap: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.blog{
+  width: 260px;
+  padding: 20px;
+  /* height: 300px; */
+  border: 1px solid darkgray;
+  border-radius: 20px;
+}
+
+.blog .imgBox{
+  position: relative;
+  width:100%;
+  height: 200px;
+}
+.blog .imgBox img{
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.blog article{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blog article img{
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.blog article p{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

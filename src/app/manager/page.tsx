@@ -4,10 +4,10 @@ import { MdAdd, MdDescription, MdPhone } from "react-icons/md";
 import Link from "next/link";
 import { collection, getDocs } from "firebase/firestore";
 import { fireStoreDB } from "@/firebase/base";
+import { useEffect } from "react";
 
 const Manager = async () => {
   const postsCounter = (await getDocs(collection(fireStoreDB, 'RGVPosts/'))).size;
-
   return ( 
     <section className="managerPage">
       <ManagerSidebar/>

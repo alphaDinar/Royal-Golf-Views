@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './topNav.module.css';
 import Image from 'next/image';
 import { useState } from 'react';
-import { MdMenu } from 'react-icons/md';
+import { MdMenu, MdOutline3DRotation } from 'react-icons/md';
 
 const TopNav = () => {
   const [menuToggled, setMenuToggled] = useState(true);
@@ -42,12 +42,18 @@ const TopNav = () => {
             <Link href={'/'}> <span>Home</span> </Link>
             <Link href={'/about'}> <span>About Us</span> </Link>
             <Link href={'/gallery'}> <span>Gallery</span> </Link>
-            <Link href={'/'}> <span>Blog</span> </Link>
+            <Link href={'/blog'}> <span>Blog</span> </Link>
             <Link href={'#footerBox'}> <span>Contact</span> </Link>
-            <Link href={'/'} className={styles.inquireBox}> <span>Inquire</span> </Link>
+            <Link href={'/contact'} className={styles.inquireBox}> <span>Inquire</span> </Link>
           </nav>
         </div>
       </section>
+
+
+      <Link href={'/vTour'} className='vTour'>
+        <MdOutline3DRotation/>
+        <small>Virtual Tour</small>
+      </Link>
     </section>
   );
 }

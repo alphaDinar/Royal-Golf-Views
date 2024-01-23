@@ -60,16 +60,13 @@
   color: black;
 }
 
-
 @media all and (max-width:720px) {
   .topNav {
     width: calc(100% - 30px);
-    /* height: calc(5vh + 40px); */
     margin: 15px;
   }
 
   .topNavCon {
-    /* width: max-content; */
     margin: 0 auto;
     justify-content: center;
   }

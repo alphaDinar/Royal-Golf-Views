@@ -1,0 +1,20 @@
+.vTourBox{
+  height: 100vh;
+}
+
+.back{
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: salmon;
+  height: 30px;
+  padding: 3px;
+  width: 30px;
+  color: wheat;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.vTourBox iframe{
+  width: 100%;
+  height: 100%;
+}

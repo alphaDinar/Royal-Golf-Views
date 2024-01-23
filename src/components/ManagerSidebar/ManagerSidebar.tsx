@@ -3,10 +3,27 @@ import Image from 'next/image';
 import styles from './managerSidebar.module.css';
 import Link from 'next/link';
 import { MdDescription, MdMessage, MdPhone, MdPowerSettingsNew, MdSend } from 'react-icons/md';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { fireAuth } from '@/firebase/base';
 
 const ManagerSidebar = () => {
   const pathName = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    onAuthStateChanged(fireAuth, (user) => {
+      if (!user) {
+        router.push('/manager/login');
+      }
+    })
+  }, [])
+
+  const logoutUser =()=>{
+    signOut(fireAuth);
+    router.push('/manager/login');
+  }
 
   return (
     <section className={styles.sidebar}>
@@ -28,7 +45,7 @@ const ManagerSidebar = () => {
         <Link href={'bulkMail'}><MdSend /> Bulk E-Mail</Link>
       </nav>
 
-      <footer>
+      <footer onClick={logoutUser}>
         <MdPowerSettingsNew />
       </footer>
     </section>

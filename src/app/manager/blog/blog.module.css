@@ -7,9 +7,22 @@
 .blog{
   width: 260px;
   padding: 20px;
-  /* height: 300px; */
   border: 1px solid darkgray;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+.add svg{
+  font-size: 2rem;
 }
 
 .blog .imgBox{
@@ -37,4 +50,24 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.blog nav{
+  display: flex;
+  gap: 0.5rem;
+}
+.blog nav svg{
+  height: 20px;
+  width: 20px;
+  padding: 5px;
+  border-radius: 3px;
+  color: white;
+}
+
+.blog nav svg:nth-child(1){
+  background: skyblue;
+}
+
+.blog nav svg:nth-child(2){
+  background: tomato;
 }

@@ -3,7 +3,7 @@ import styles from './home.module.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi } from 'react-icons/md';
+import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdOutline3DRotation, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi } from 'react-icons/md';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css/pagination';
@@ -14,8 +14,10 @@ import { TbDeviceCctv, TbFridge } from 'react-icons/tb';
 import { IoShirtOutline } from 'react-icons/io5';
 import Footer from '@/components/Footer/Footer';
 import Loader from '@/components/Loader/Loader';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { fireStoreDB } from '@/firebase/base';
+import { sortByTime, getTimeSince } from '@/external/external';
+import Waiter from '@/components/Waiter/Waiter';
 
 
 interface Post extends Record<string, any> { }
@@ -23,7 +25,6 @@ interface Post extends Record<string, any> { }
 const Home = () => {
   const introVideoRef = useRef<HTMLVideoElement>(null);
   const featureImageRef = useRef<Array<HTMLImageElement | null>>([]);
-  // useRef<Array<HTMLImageElement | null>>([]);
   const [pageLoaded, setPageLoaded] = useState(false);
   const [menuToggled, setMenuToggled] = useState(false);
   const [menuPosition, setMenuPosition] = useState('-170px');
@@ -43,19 +44,19 @@ const Home = () => {
       setMenuPosition('-170px');
     }
   }
-  
+
 
   const handleIntroVideoPass = () => {
-    setPageLoaded(true);  
+    setPageLoaded(true);
   }
 
 
   useEffect(() => {
 
-    setTimeout(()=>{
+    setTimeout(() => {
       handleIntroVideoPass();
     }, 8000)
-    
+
     if (introVideoRef.current) {
       if (introVideoRef.current.readyState >= 3) {
         handleIntroVideoPass();
@@ -64,14 +65,6 @@ const Home = () => {
 
     setMenuToggled(true);
     setMenuPosition('-170px');
-
-    const getPosts = async () => {
-      const postsTemp = (await getDocs(collection(fireStoreDB, '/Categories'))).docs;
-      setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post));
-    };
-
-    getPosts();
-
 
     if (typeof window != 'undefined') {
       if (window.innerWidth > 550) {
@@ -98,10 +91,18 @@ const Home = () => {
         setTestimonialSlideNum(1)
       }
     }
+
+    const postStream = onSnapshot(collection(fireStoreDB, '/RGVPosts'), (snapshot) => {
+      const postsTemp = snapshot.docs;
+      setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime).slice(0, 3));
+    })
+
+    return () => postStream();
   }, [introVideoRef])
 
 
   const gallerySwiperPrev = () => {
+    console.log(posts)
     if (gallerySwiper.current) {
       gallerySwiper.current.swiper.slidePrev();
     }
@@ -239,12 +240,13 @@ const Home = () => {
   return (
     <main>
       <section className={styles.headBox}>
-        {/* <Image
-        className={styles.placeholder}
-        alt=''
-        fill
-        src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705704195/RGV/place_dhvsk3.jpg'}
-        /> */}
+        <Image
+          className={styles.placeholder}
+          alt=''
+          fill
+          // src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705015586/RGV/rgv-logo_y8mwt8.png'}
+          src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705704195/RGV/place_dhvsk3.jpg'}
+        />
         <video
           ref={introVideoRef}
           autoPlay
@@ -272,12 +274,11 @@ const Home = () => {
               <Link href={'/'}> <span>Home</span> </Link>
               <Link href={'/about'}> <span>About Us</span> </Link>
               <Link href={'/gallery'}> <span>Gallery</span> </Link>
-              <Link href={'/'}> <span>Blog</span> </Link>
-              <Link href={'/'}> <span>Contact</span> </Link>
-              <Link href={'/'} className={styles.inquireBox}> <span>Inquire</span> </Link>
+              <Link href={'/blog'}> <span>Blog</span> </Link>
+              <Link href={'#footerBox'}> <span>Contact</span> </Link>
+              <Link href={'/contact'} className={styles.inquireBox}> <span>Inquire</span> </Link>
             </nav>
           </div>
-
 
           <article className={styles.headBoxConText}>
             <strong>
@@ -299,12 +300,10 @@ const Home = () => {
               <MdRadioButtonChecked />
               <span>3 bedroom apartments</span>
             </p>
-            <Link href={''}>
+            <Link href={'/slideshow'}>
               <span>Explore</span>
             </Link>
           </section>
-
-
         </section>
       </section>
 
@@ -400,7 +399,6 @@ const Home = () => {
           style={{ width: '100%' }}
           className={styles.facilityBoxSwiper}
         >
-
           {facilityList.map((item, i) => (
             <SwiperSlide key={i}>
               <div className={styles.facility}>
@@ -424,76 +422,65 @@ const Home = () => {
       <section className={styles.blogBox}>
         <header>
           <h3>Our News & Blog <sub></sub></h3>
-          <Link href=''>
+          <Link href={'/blog'}>
             <button>Read More</button>
           </Link>
         </header>
 
-        <section>
-          <div className={styles.left}>
-            <Image alt='' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705048061/RGV/frontViewSmall_jvtolq.jpg'}
-              fill
-              sizes='1'
-              style={{ borderRadius: '20px', objectFit: 'cover' }}
-            />
-            <article>
-              <span style={{ color: 'wheat' }}>Focuses on features that enhance convenience</span>
-              <small className='cut3'>This includes things like gyms, pools, rooftop decks, concierge services, dog parks, community rooms, and in-unit features
-                like washer/dryer, high-end appliances, or smart home technology.
-              </small>
+        {posts.length > 0 ?
+          <section>
+            <Link href={`/blog/${posts[0].id}`} className={styles.left}>
+              <Image alt='' src={posts[0].thumbnail}
+                fill
+                sizes='1'
+                style={{ borderRadius: '20px', objectFit: 'cover' }}
+              />
+              <article>
+                <span style={{ color: 'wheat' }}>{posts[0].title}</span>
+                <small className='cut3'>
+                  {posts[0].excerpt}
+                </small>
 
-              <p>
-                <Image
-                  alt='dp'
-                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'}
-                  height={50}
-                  width={50}
-                  style={{ borderRadius: '50%', objectFit: 'cover' }}
-                />
+                <p>
+                  <Image
+                    alt='dp'
+                    src={posts[0].authorImage}
+                    height={50}
+                    width={50}
+                    style={{ borderRadius: '50%', objectFit: 'cover' }}
+                  />
 
-                <span>
-                  <small>RGV</small>
-                  <sub></sub>
-                  <small>8 mins ago</small>
-                </span>
-              </p>
-            </article>
-          </div>
-          <section className={styles.right}>
-            <div className={styles.nextBlog}>
-              <div className={styles.imgBox}>
-                <Image
-                  alt='dp'
-                  sizes='1'
-                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705048061/RGV/frontViewSmall_jvtolq.jpg'}
-                  fill
-                  style={{ borderRadius: '10px', objectFit: 'cover' }}
-                />
-              </div>
-              <p>
-                <strong>Buy Real Estate</strong>
-                <small className='cut3'>World-class luxury flats, quality workmanship with attention to detail. Kumasi is the capital of the Ashanti Region of Ghana, also known as the Garden City of Ghana.</small>
-                <sub style={{ color: 'tomato' }}>3 mins ago</sub>
-              </p>
-            </div>
-            <div className={styles.nextBlog}>
-              <div className={styles.imgBox}>
-                <Image
-                  alt='dp'
-                  sizes='1'
-                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705048061/RGV/frontViewSmall_jvtolq.jpg'}
-                  fill
-                  style={{ borderRadius: '10px', objectFit: 'cover' }}
-                />
-              </div>
-              <p>
-                <strong>Buy Real Estate</strong>
-                <small className='cut3'>World-class luxury flats, quality workmanship with attention to detail. Kumasi is the capital of the Ashanti Region of Ghana, also known as the Garden City of Ghana.</small>
-                <sub>3 mins ago</sub>
-              </p>
-            </div>
+                  <span>
+                    <small>{posts[0].author}</small>
+                    <sub></sub>
+                    <small>{getTimeSince(posts[0].timestamp)}</small>
+                  </span>
+                </p>
+              </article>
+            </Link>
+            <section className={styles.right}>
+              {posts.slice(1, 3).map((post) => (
+                <Link href={`/blog/${post.id}`} className={styles.nextBlog}>
+                  <div className={styles.imgBox}>
+                    <Image
+                      alt='dp'
+                      sizes='1'
+                      src={post.thumbnail}
+                      fill
+                      style={{ borderRadius: '10px', objectFit: 'cover' }}
+                    />
+                  </div>
+                  <p>
+                    <strong>{post.title}</strong>
+                    <small className='cut3'>{post.excerpt}</small>
+                    <sub style={{ color: 'tomato' }}>{getTimeSince(post.timestamp)}</sub>
+                  </p>
+                </Link>
+              ))}
+            </section>
           </section>
-        </section>
+          : <Waiter />
+        }
       </section>
 
       <section className={styles.testimonialBox}>
@@ -566,6 +553,11 @@ const Home = () => {
         loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
       <Footer />
+
+      <Link href={'/vTour'} className='vTour'>
+        <MdOutline3DRotation />
+        <small>Virtual Tour</small>
+      </Link>
 
       {pageLoaded ? null : <Loader />}
     </main>

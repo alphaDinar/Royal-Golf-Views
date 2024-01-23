@@ -1,5 +1,5 @@
 'use client'
-import { MdArrowBackIos, MdInfo, MdInfoOutline, MdRadioButtonChecked } from 'react-icons/md';
+import { MdArrowBackIos, MdArrowForward, MdArrowForwardIos, MdInfo, MdInfoOutline, MdRadioButtonChecked } from 'react-icons/md';
 import styles from './slideshow.module.css';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,57 +7,90 @@ import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css/pagination';
 import 'swiper/css';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 const SlideShow = () => {
+  const showSwiper = useRef<{ swiper: any }>({ swiper: null });
+
   const featureList = [
-    '3 Bedrooms per apartment',
-    'Living room',
-    'Kitchen',
-    'Dining place',
-    'Pool area',
-    'Parking area',
-    'Common sitting area',
-    'Air conditioned system',
-    '4 Washrooms per apartment',
-    'Balcony',
-    'Elevator',
-    'Gym'
+    { tag: '3 Bedrooms per apartment', target: 0 },
+    { tag: '4 Washrooms per apartment', target: 3 },
+    { tag: '3 Closets per apartment', target: 4 },
+    { tag: 'Living room', target: 5 },
+    { tag: 'Air conditioned system', target: 5 },
+    { tag: 'Dining place', target: 8 },
+    { tag: 'Kitchen', target: 9 },
+    { tag: 'Balcony', target: 12 },
+    { tag: 'Elevator', target: 13 },
+    { tag: 'Common sitting area', target: 15 },
+    { tag: 'Parking area', target: 16 },
+    { tag: 'Pool area', target: 17 },
+    { tag: 'Gym', target: 17 },
   ];
 
+
   const slideList = [
-    {tag : 'Front View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862528/RGV/FrontViewMin_o622y6.jpg'},
-    {tag : 'Garden View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862653/RGV/GardenViewBig_eos8dk.jpg'},
+    { tag: 'Bedroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000920/RGV/IMG_0026_naknxg.jpg' },
+    { tag: 'Bedroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706001082/RGV/IMG_0029_ta0bxb.jpg' },
+    { tag: 'Bedroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706001318/RGV/IMG_0052_vlzwma.jpg' },
 
-    {tag : 'Balcony', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705863313/RGV/IMG_0080_jhvpwg.jpg'},
-    {tag : 'Pool View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862837/RGV/IMG_0135_lcpa5t.jpg'},
-    {tag : 'Pool View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862858/RGV/IMG_0134_th38no.jpg'},
-    {tag : 'Pool View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705863007/RGV/IMG_0133_jjmzxm.jpg'},
-  
+    { tag: 'Washroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706001399/RGV/IMG_0044_xkizxb.jpg' },
 
-    {tag : 'Compound View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705863109/RGV/IMG_0100_wky8ai.jpg'},
+    { tag: 'Closet', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706001519/RGV/IMG_0061_s2zbfc.jpg' },
 
+    { tag: 'Living Room', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000350/RGV/IMG_0054_fexs0p.jpg' },
+    { tag: 'Living Room', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000621/RGV/IMG_0079_collcm.jpg' },
+    { tag: 'Living Room', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000490/RGV/IMG_0055_idrkhr.jpg' },
 
-    {tag : 'Dining Place', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/dining_s4qaop.jpg'},
-    {tag : 'Landscape View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView4_k5coyb.jpg'},
-    {tag : 'Landscape View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView5_aowvt2.jpg'},
-    {tag : 'Pool View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/poolView1_srgrq0.jpg'},
-    {tag : 'Car Park', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/parkView1_yx1fin.jpg'},
-    {tag : 'Living Room', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/living4_sgfz7c.jpg'},
-    {tag : 'Kitchen', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/kit4_epry84.jpg'},
-    {tag : 'Landscape View', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/comView2_st9ut2.jpg'},
-    {tag : 'Living Room', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/living2_sfipyh.jpg'},
-    {tag : 'Common Sitting Area', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/commonView3_xqxzct.jpg'},
-    {tag : 'Living Room', src : 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/living_ja7hnm.jpg'}
-]
+    { tag: 'Dining Place', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705999801/RGV/IMG_0078_pveoz6.jpg' },
 
+    { tag: 'Kitchen', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705999675/RGV/kitchen4min_o4mds3.jpg' },
+    { tag: 'Kitchen', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706003219/RGV/IMG_0083_hd79ir.jpg' },
+    { tag: 'Kitchen', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706003292/RGV/IMG_0084_sbeseh.jpg' },
 
-const handleImageLoader =()=>{
-  console.log('image Loader');
-}
+    { tag: 'Balcony', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705863313/RGV/IMG_0080_jhvpwg.jpg' },
 
+    { tag: 'Elevator', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706001605/RGV/IMG_0086_caaod3.jpg' },
+    { tag: 'Floor View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706001640/RGV/IMG_0085_ltjp73.jpg' },
+
+    { tag: 'Common Sitting Area', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000555/RGV/IMG_0057_zj6w7q.jpg' },
+
+    { tag: 'Car Park', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000245/RGV/IMG_0094_y4iswr.jpg' },
+
+    { tag: 'Pool View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862837/RGV/IMG_0135_lcpa5t.jpg' },
+    { tag: 'Pool View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862858/RGV/IMG_0134_th38no.jpg' },
+    { tag: 'Pool View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705863007/RGV/IMG_0133_jjmzxm.jpg' },
+    { tag: 'Pool View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/poolView1_srgrq0.jpg' },
+
+    { tag: 'Front View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862528/RGV/FrontViewMin_o622y6.jpg' },
+    { tag: 'Garden View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862653/RGV/GardenViewBig_eos8dk.jpg' },
+
+    { tag: 'Compound View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000711/RGV/IMG_0100_1_vn7dr7.jpg' },
+    { tag: 'Landscape View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706001866/RGV/IMG_0058_knb4ks.jpg' },
+    { tag: 'Landscape View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705999984/RGV/IMG_0097_1_lrdrzi.jpg' },
+    { tag: 'Landscape View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000145/RGV/IMG_0060_ts1wgj.jpg' },
+    { tag: 'Landscape View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000421/RGV/IMG_0098_1_ku4o9s.jpg' },
+  ]
+
+  const showSwiperPrev = () => {
+    if (showSwiper.current) {
+      showSwiper.current.swiper.slidePrev();
+    }
+  }
+  const showSwiperNext = () => {
+    if (showSwiper.current) {
+      showSwiper.current.swiper.slideNext();
+    }
+  }
+
+  const setTarget =(i : number)=>{
+    showSwiper.current.swiper.slideTo(i);
+  }
   return (
     <main className={styles.slideshowBox}>
-      <Image alt='' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705015586/RGV/rgv-logo_y8mwt8.png'} height={50} width={80}/>
+      <Link href={'/'}>
+        <Image alt='' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705015586/RGV/rgv-logo_y8mwt8.png'} height={50} width={80} />
+      </Link>
 
       <header>
         <Link href={'/gallery'}>
@@ -71,9 +104,10 @@ const handleImageLoader =()=>{
           <strong className='caps'>Property Features</strong>
           <article>
             {featureList.map((feature, i) => (
-              <p key={i}>
-                <MdRadioButtonChecked />
-                <span>{feature}</span>
+              <p key={i} onClick={()=>{setTarget(feature.target)}}>
+                <MdRadioButtonChecked style={{color : 'var(--pass)'}} />
+                <span>{feature.tag}</span>
+                <MdArrowForward/>
               </p>
             ))}
           </article>
@@ -81,31 +115,34 @@ const handleImageLoader =()=>{
           <div className={styles.extra}>
             <MdInfoOutline />
             <small>
-              Room Features are fully customizable to suit your preferences.
+              Although full furnished room Features are still fully customizable to suit your preferences.
             </small>
             <Link href={'/'}>
-            <button>Inquire now</button>
+              <button>Inquire now</button>
             </Link>
           </div>
         </div>
         <Swiper
-          // modules={[Autoplay]}
-          // loop={true}
+          modules={[Autoplay, EffectFade]}
+          // effect={'fade'}
+          loop={true}
           speed={1000}
-          // ref={gallerySwiper}
-          // slidesPerView={gallerySlideNum}
-          // spaceBetween={gallerySlideGap}
-          // autoplay={{ delay: 3500, disableOnInteraction: true, pauseOnMouseEnter: true }}
-          // style={{ width: '100%' }}
+          ref={showSwiper}
+          autoplay={{ delay: 3500, disableOnInteraction: true, pauseOnMouseEnter: true }}
           className={styles.showSwiper}
         >
-          {/* {slideList.map((item, i) => ( */}
-            <SwiperSlide>
+          {slideList.map((item, i) => (
+            <SwiperSlide key={i}>
               <div className={styles.slideBox}>
-                <Image fill alt='' src={slideList[0].src} sizes='1' onLoad={handleImageLoader} />
+                <Image fill alt='' src={item.src} sizes='1' />
+                <legend>{item.tag}</legend>
               </div>
             </SwiperSlide>
-          {/* ))} */}
+          ))}
+          <nav>
+            <MdArrowBackIos onClick={showSwiperPrev} />
+            <MdArrowForwardIos onClick={showSwiperNext} />
+          </nav>
         </Swiper>
       </section>
     </main>

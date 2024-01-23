@@ -1,15 +1,34 @@
+'use client'
 import ManagerSidebar from "@/components/ManagerSidebar/ManagerSidebar";
 import styles from './blog.module.css';
-import { MdAdd, MdDescription, MdPhone } from "react-icons/md";
+import { MdAdd, MdDeleteOutline, MdDescription, MdEdit, MdPhone } from "react-icons/md";
 import Link from "next/link";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, onSnapshot } from "firebase/firestore";
 import { fireStoreDB } from "@/firebase/base";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { getTimeSince, sortByTime } from "@/external/external";
 
 interface Post extends Record<string, any> { }
+const Blog = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
 
-const Blog = async () => {
-  const posts: Post[] = (await getDocs(collection(fireStoreDB, 'RGVPosts/'))).docs.map((post) => ({ id: post.id, ...post.data() }));
+  useEffect(() => {
+    const postStream = onSnapshot(collection(fireStoreDB, 'RGVPosts/'), (snapshot) => {
+      const postsTemp = snapshot.docs;
+      setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime));
+    })
+
+    return () => postStream();
+  }, [])
+
+  const deletePost = (id: string) => {
+    const confirm = window.confirm('Are you sure you want to delete Post ?');
+    if (confirm) {
+      console.log('started');
+      deleteDoc(doc(fireStoreDB, 'RGVPosts/' + id));
+    }
+  }
 
   return (
     <section className="managerPage">
@@ -21,8 +40,9 @@ const Blog = async () => {
 
         <section className={styles.con}>
           <section className={styles.blogs}>
-            <Link href={'/manager/addPost'} className={styles.blog}>
-              <span>Add Span</span>
+            <Link href={'/manager/addPost'} className={`${styles.blog} ${styles.add}`}>
+              <span>Add Blog</span>
+              <MdAdd/>
             </Link>
             {posts.map((post, i) => (
               <div key={i} className={styles.blog}>
@@ -35,13 +55,20 @@ const Blog = async () => {
                   <small className="cut3">
                     {post.excerpt}
                   </small>
-                  <Image alt="" src={post.authorImage} height={40} width={40} />
 
                   <p>
                     {post.author}
-                    <small>3 mins ago</small>
+                    <small>{getTimeSince(post.timestamp)}</small>
                   </p>
+                  <Image alt="" src={post.authorImage} height={40} width={40} />
                 </article>
+
+                <nav>
+                  <Link href={`/manager/editPost/${post.id}`}>
+                    <MdEdit  />
+                  </Link>
+                  <MdDeleteOutline onClick={() => { deletePost(post.id) }} />
+                </nav>
               </div>
             ))}
           </section>

@@ -39,7 +39,7 @@ const EditPost = () => {
       setThumbnailPreview(post.thumbnail);
     }
     getPost();
-  }, [])
+  }, [id])
 
   const handleSubmit = async (e: React.FormEvent) => {
     setIsLoading(true);

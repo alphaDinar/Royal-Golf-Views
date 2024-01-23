@@ -18,7 +18,7 @@ const ManagerSidebar = () => {
         router.push('/manager/login');
       }
     })
-  }, [])
+  }, [router])
 
   const logoutUser =()=>{
     signOut(fireAuth);

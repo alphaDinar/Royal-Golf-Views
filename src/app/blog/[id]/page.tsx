@@ -24,7 +24,7 @@ const Blog = () => {
       setPost(post);
     }
     getPost();
-  }, [])
+  }, [id])
 
   return (
     <main className={styles.blogBoxHolder}>

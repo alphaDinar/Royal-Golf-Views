@@ -459,8 +459,8 @@ const Home = () => {
               </article>
             </Link>
             <section className={styles.right}>
-              {posts.slice(1, 3).map((post) => (
-                <Link href={`/blog/${post.id}`} className={styles.nextBlog}>
+              {posts.slice(1, 3).map((post,i) => (
+                <Link href={`/blog/${post.id}`} key={i} className={styles.nextBlog}>
                   <div className={styles.imgBox}>
                     <Image
                       alt='dp'

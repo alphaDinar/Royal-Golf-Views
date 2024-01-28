@@ -7,6 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { fireAuth } from '@/firebase/base';
+import { GrAnnounce } from 'react-icons/gr';
 
 const ManagerSidebar = () => {
   const pathName = usePathname();
@@ -40,6 +41,7 @@ const ManagerSidebar = () => {
 
       <nav>
         <Link href={'/manager/blog'}><MdDescription />  Blog</Link>
+        <Link href={'/manager/testimonials'}><GrAnnounce/> Announcement</Link>
         <Link href={'contact'}><MdPhone /> Contact</Link>
         <Link href={'bulkSMS'}><MdMessage /> Bulk SMS</Link>
         <Link href={'bulkMail'}><MdSend /> Bulk E-Mail</Link>

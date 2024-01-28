@@ -18,6 +18,7 @@ import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { fireStoreDB } from '@/firebase/base';
 import { sortByTime, getTimeSince } from '@/external/external';
 import Waiter from '@/components/Waiter/Waiter';
+import introPlace from '../../public/introPlace.JPG';
 
 
 interface Post extends Record<string, any> { }
@@ -34,6 +35,7 @@ const Home = () => {
   const [testimonialSlideNum, setTestimonialSlideNum] = useState(0);
   const [gallerySlideGap, setGallerySlideGap] = useState(25);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [testimonials, setTestimonials] = useState<Post[]>([]);
 
   const toggleMenu = () => {
     if (menuToggled) {
@@ -97,7 +99,15 @@ const Home = () => {
       setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime).slice(0, 3));
     })
 
-    return () => postStream();
+    const testimonialStream = onSnapshot(collection(fireStoreDB, '/RGVTestimonials'), (snapshot) => {
+      const postsTemp = snapshot.docs;
+      setTestimonials(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime).slice(0, 3));
+    })
+
+    return () => {
+      postStream(); 
+      testimonialStream();
+    };
   }, [introVideoRef])
 
 
@@ -244,8 +254,7 @@ const Home = () => {
           className={styles.placeholder}
           alt=''
           fill
-          // src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705015586/RGV/rgv-logo_y8mwt8.png'}
-          src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705704195/RGV/place_dhvsk3.jpg'}
+          src={introPlace}
         />
         <video
           ref={introVideoRef}
@@ -459,7 +468,7 @@ const Home = () => {
               </article>
             </Link>
             <section className={styles.right}>
-              {posts.slice(1, 3).map((post,i) => (
+              {posts.slice(1, 3).map((post, i) => (
                 <Link href={`/blog/${post.id}`} key={i} className={styles.nextBlog}>
                   <div className={styles.imgBox}>
                     <Image
@@ -482,7 +491,9 @@ const Home = () => {
           : <Waiter />
         }
       </section>
+        
 
+      {testimonials.length > 0 ? 
       <section className={styles.testimonialBox}>
         <h4 className='caps'>Testimonials</h4>
         <p style={{ textAlign: 'center' }}>Don&apos;t just take our word for it. Check out what our residents are saying about their experience buying, selling, or renting with Royal Golf Views.</p>
@@ -500,53 +511,33 @@ const Home = () => {
           style={{ width: '100%' }}
           className={styles.testimonialBoxSwiper}
         >
-
+          {testimonials.map((el)=>(
           <SwiperSlide>
             <Link href='' className={styles.testimonial}>
               <MdFormatQuote />
-              <span className='cut3'>
-                What happens when you find the ideal home not just through specs and photos, but through the voices of those who live there? Scroll down and step into a world of fulfilled dreams, happy surprises, and the transformative power of a perfect address
+              <span className='cut6'>
+                {el.excerpt}
               </span>
               <article>
                 <Image
                   alt='dp'
-                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
+                  src={el.authorImage}
                   height={50}
                   width={50}
                   style={{ borderRadius: '50%', objectFit: 'cover' }}
                 />
                 <p>
-                  <strong>Mr. Emmanuel</strong>
-                  <small style={{ color: 'darkgray' }}>Businessman</small>
+                  <strong>{el.author}</strong>
+                  <small style={{ color: 'darkgray' }}>{el.position}</small>
                 </p>
               </article>
-
             </Link>
           </SwiperSlide>
-          <SwiperSlide>
-            <Link href='' className={styles.testimonial}>
-              <MdFormatQuote />
-              <span className='cut3'>
-                What happens when you find the ideal home not just through specs and photos, but through the voices of those who live there? Scroll down and step into a world of fulfilled dreams, happy surprises, and the transformative power of a perfect address
-              </span>
-              <article>
-                <Image
-                  alt='dp'
-                  src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1702584837/RadioProject/fve3p0jyrsndahlyeyju.jpg'}
-                  height={50}
-                  width={50}
-                  style={{ borderRadius: '50%', objectFit: 'cover' }}
-                />
-                <p>
-                  <strong>Mr. Emmanuel</strong>
-                  <small style={{ color: 'darkgray' }}>Businessman</small>
-                </p>
-              </article>
-
-            </Link>
-          </SwiperSlide>
+          ))}
         </Swiper>
       </section>
+      : <Waiter/>
+    }
 
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.7896554104227!2d-1.6257415251668679!3d6.672964993322162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb96c5ebefb6cd%3A0x86a41423889ab7e1!2sRoyal%20Golf%20Views%20Luxury%20Apartments!5e0!3m2!1sen!2sgh!4v1705084024055!5m2!1sen!2sgh"
         width="100%" height="450"

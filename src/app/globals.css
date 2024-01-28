@@ -37,7 +37,7 @@ body::-webkit-scrollbar-thumb{
   font-size: 1.1rem;
 }
 
-.cut, .cut3{
+.cut, .cut3, .cut6{
   display: -webkit-box;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
@@ -45,6 +45,9 @@ body::-webkit-scrollbar-thumb{
 }
 .cut3{
   -webkit-line-clamp: 3;
+}
+.cut6{
+  -webkit-line-clamp: 4;
 }
 
 h4 sub{

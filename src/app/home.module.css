@@ -798,6 +798,17 @@
   .brochureBox .imgBox{
     width: 80%;
   }
+
+  .mapBox .contactCon .right{
+    width: 100%;
+  }
+  .mapBox .contactCon .right form{
+    background: salmon;
+    width: calc(100% - 40px);
+  }
+  .mapBox .contactCon .right form div input, .mapBox .contactCon .right form div textarea{
+    width: calc(100% - 20px);
+  }
 }
 
 @media all and (max-width:450px) {
@@ -847,9 +858,6 @@
   }
   .nextBlog .imgBox {
     min-width: 100px;
-  }
-  .mapBox .contactCon .right form  div input, .mapBox .contactCon .right form div textarea{
-    width: 180px;
   }
   .headBox {
     height: 55vh;

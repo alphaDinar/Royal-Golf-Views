@@ -18,7 +18,7 @@ import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 import { fireStoreDB } from '@/firebase/base';
 import { sortByTime, getTimeSince } from '@/external/external';
 import Waiter from '@/components/Waiter/Waiter';
-import introPlace from '../../public/introPlace.JPG';
+import introPlace from '../../public/intro.jpg';
 import brochure from '../../public/brochure.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -26,7 +26,6 @@ import { featureList, galleryListA, galleryListB } from '@/external/lists';
 import { FaRegDotCircle } from 'react-icons/fa';
 import { FaFacebookF, FaGoogle, FaInstagram } from 'react-icons/fa6';
 import { HiOutlineCloudDownload } from 'react-icons/hi';
-
 
 interface Post extends Record<string, any> { }
 

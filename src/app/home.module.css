@@ -803,7 +803,6 @@
     width: 100%;
   }
   .mapBox .contactCon .right form{
-    background: salmon;
     width: calc(100% - 40px);
   }
   .mapBox .contactCon .right form div input, .mapBox .contactCon .right form div textarea{

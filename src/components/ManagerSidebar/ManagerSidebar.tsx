@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import styles from './managerSidebar.module.css';
 import Link from 'next/link';
-import { MdDescription, MdMessage, MdPhone, MdPowerSettingsNew, MdSend } from 'react-icons/md';
+import { MdDescription, MdMenu, MdMessage, MdPhone, MdPowerSettingsNew, MdSend } from 'react-icons/md';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
@@ -28,6 +28,7 @@ const ManagerSidebar = () => {
 
   return (
     <section className={styles.sidebar}>
+      <MdMenu className={styles.menuTag} />
       <header>
         <Link href={'/manager'}>
           <Image
@@ -41,10 +42,10 @@ const ManagerSidebar = () => {
 
       <nav>
         <Link href={'/manager/blog'}><MdDescription />  Blog</Link>
-        <Link href={'/manager/testimonials'}><GrAnnounce/> Announcement</Link>
-        <Link href={'contact'}><MdPhone /> Contact</Link>
-        <Link href={'bulkSMS'}><MdMessage /> Bulk SMS</Link>
-        <Link href={'bulkMail'}><MdSend /> Bulk E-Mail</Link>
+        <Link href={'/manager/testimonials'}><GrAnnounce/> Testimonials</Link>
+        <Link href={'/manager/contact'}><MdPhone /> Contacts</Link>
+        <Link href={'/manager/bulkSMS'}><MdMessage /> Bulk SMS</Link>
+        <Link href={'/manager/bulkMail'}><MdSend /> Bulk E-Mail</Link>
       </nav>
 
       <footer onClick={logoutUser}>

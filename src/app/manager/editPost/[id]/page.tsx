@@ -46,6 +46,7 @@ const EditPost = () => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const isCreated = await EditBlog(formData, id.toString(), authorUrlFinal, thumbnailUrlFinal);
+    console.log(isCreated)
     if (isCreated) {
       router.push('/manager/blog');
     } else {

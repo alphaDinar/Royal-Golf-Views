@@ -7,13 +7,17 @@
   gap: 1.5rem;
 }
 
-.galleryCon header{
+.galleryCon div{
+  cursor: pointer;
+}
+
+.galleryCon header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
 }
 
-.galleryCon header button{
+.galleryCon header button {
   background: var(--pass);
   padding: 10px;
   color: white;
@@ -111,7 +115,6 @@
 
 
 .set3 {
-  /* border: 2px solid black; */
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
@@ -125,6 +128,124 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
+.popupBox {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.304);
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popupBox .sheet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+.popup {
+  z-index: 200;
+  width: calc(70% - 30px);
+  height: calc(70vh - 30px);
+  padding: 15px;
+  background: white;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 40px;
+  gap: 2rem;
+}
+
+.popup .tagBoxHolder {
+  margin: auto auto 0 auto;
+  background: var(--theme);
+  width: 170px;
+  height: 170px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+}
+
+.popup .tagBoxHolder .tagBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.popup .tagBoxHolder .tagBox p {
+  display: flex;
+  flex-direction: column;
+  rotate: -90deg;
+}
+
+.popup .tagBoxHolder .tagBox p span {
+  color: white;
+}
+
+.popup .tagBoxHolder .tagBox p small {
+  color: darkgray;
+}
+
+.popup .tagBoxHolder nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.popup .tagBoxHolder nav svg {
+  color: wheat;
+  font-size: 1.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gallerySwiper{
+  width: 100%;
+  height: 100%;
+}
+
+.popup .imgBox {
+  height: 100%;
+  position: relative;
+}
+
+
+.popup .imgBox img {
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+@media all and (max-width:1250px) {
+  .popup {
+    width: calc(85% - 30px);
+  }
+}
+
+@media all and (max-width:900px) {
+  .popup{
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  .gallerySwiper{
+    height: 350px;
+  }
+}
+
+@media all and (max-width:450px) {
+  .gallerySwiper{
+    height: 250px;
+  }
+}
 
 
 @media all and (max-width:1300px) {
@@ -161,20 +282,21 @@
   }
 
   .set1,
-.set2,
-.set3 {
-  height: 600px;
-}
+  .set2,
+  .set3 {
+    height: 600px;
+  }
 
-.imgBox4 {
-  height: 1200px;
-}
+  .imgBox4 {
+    height: 1200px;
+  }
 
 }
 
 @media all and (max-width:550px) {
+
   .set1 div:nth-child(2),
-.set1 div:nth-child(3) {
-  width: 100%;
-}
+  .set1 div:nth-child(3) {
+    width: 100%;
+  }
 }

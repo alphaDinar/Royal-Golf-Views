@@ -43,8 +43,8 @@ const TopNav = () => {
             <Link href={'/about'}> <span>About Us</span> </Link>
             <Link href={'/gallery'}> <span>Gallery</span> </Link>
             <Link href={'/blog'}> <span>Blog</span> </Link>
-            <Link href={'#footerBox'}> <span>Contact</span> </Link>
-            <Link href={'/contact'} className={styles.inquireBox}> <span>Inquire</span> </Link>
+            <Link href={'/#mapBox'}> <span>Contact</span> </Link>
+            {/* <Link href={'/contact'} className={styles.inquireBox}> <span>Inquire</span> </Link> */}
           </nav>
         </div>
       </section>

@@ -17,12 +17,12 @@
 }
 
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar, body > * ::-webkit-scrollbar{
   width: 8px;
   border-radius: 100px;
   background: #3f4448;
 }
-body::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar-thumb ,body > * ::-webkit-scrollbar-thumb{
   border-radius: 100px;
   background: lightgray;
 }
@@ -91,15 +91,22 @@ h3 sub{
 .managerPage{
   display: flex;
   justify-content: flex-end;
+  background: #2c2c2c;
 }
 .managerPage main{
-  width: 75%;
-  min-height: 90vh;
+  border-radius: 30px;
+  width: calc(75% - 30px);
+  height: calc(90vh - 30px);
+  background: white;
   padding: 5vh 2.5%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  margin: 15px;
+  overflow-y: auto;
 }
+
+
 
 .managerForm{
   display: flex;
@@ -177,6 +184,16 @@ h3 sub{
 
 .vTour small{
   font-size: 0.5rem;
+}
+
+@media all and (max-width : 1300px){
+  .managerPage main{
+    width: calc(95% - 20px);
+    height: calc(90vh - 20px);
+    margin: 10px;
+    background: white;
+    padding: 5vh 2.5%;
+  }
 }
 
 @media all and (max-width: 650px){

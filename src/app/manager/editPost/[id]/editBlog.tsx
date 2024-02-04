@@ -36,6 +36,7 @@ export const EditBlog = async(data : FormData, id : string,authorUrlFinal : stri
     thumbnail : thumbnailUrlFinal,
   })
   .then(()=>{
+    console.log('passed')
     res = true;
   })
   .catch((error)=>{

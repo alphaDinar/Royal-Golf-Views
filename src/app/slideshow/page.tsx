@@ -8,26 +8,13 @@ import 'swiper/css/pagination';
 import 'swiper/css';
 import Image from 'next/image';
 import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { featureList } from '@/external/lists';
+import TopNav from '@/components/TopNav/TopNav';
 
 const SlideShow = () => {
+  const router = useRouter();
   const showSwiper = useRef<{ swiper: any }>({ swiper: null });
-
-  const featureList = [
-    { tag: '3 Bedrooms per apartment', target: 0 },
-    { tag: '4 Washrooms per apartment', target: 3 },
-    { tag: '3 Closets per apartment', target: 4 },
-    { tag: 'Living room', target: 5 },
-    { tag: 'Air conditioned system', target: 5 },
-    { tag: 'Dining place', target: 8 },
-    { tag: 'Kitchen', target: 9 },
-    { tag: 'Balcony', target: 12 },
-    { tag: 'Elevator', target: 13 },
-    { tag: 'Common sitting area', target: 15 },
-    { tag: 'Parking area', target: 16 },
-    { tag: 'Pool area', target: 17 },
-    { tag: 'Gym', target: 17 },
-  ];
-
 
   const slideList = [
     { tag: 'Bedroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000920/RGV/IMG_0026_naknxg.jpg' },
@@ -87,18 +74,9 @@ const SlideShow = () => {
     showSwiper.current.swiper.slideTo(i);
   }
   return (
+    <section>
+      <TopNav/>
     <main className={styles.slideshowBox}>
-      <Link href={'/'}>
-        <Image alt='' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705015586/RGV/rgv-logo_y8mwt8.png'} height={50} width={80} />
-      </Link>
-
-      <header>
-        <Link href={'/gallery'}>
-          <MdArrowBackIos />
-          <span>Back To Gallery</span>
-        </Link>
-      </header>
-
       <section className={styles.slideTray}>
         <div className={styles.infoBox}>
           <strong className='caps'>Property Features</strong>
@@ -146,6 +124,7 @@ const SlideShow = () => {
         </Swiper>
       </section>
     </main>
+    </section>
   );
 }
 

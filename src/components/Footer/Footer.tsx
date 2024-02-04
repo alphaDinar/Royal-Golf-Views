@@ -30,14 +30,10 @@ const Footer = () => {
               <span>ADDRESS</span>
               <small>34-35 John Owusu Addo Close, Ridge, Kumasi, Ghana</small>
             </a>
-            <a>
+            {/* <a>
               <span>PHONE</span>
               <small>+233 (0)544 339 762</small>
-            </a>
-            <a>
-              <span>E-MAIL</span>
-              <small>sales@royalgolfviews.online</small>
-            </a>
+            </a> */}
           </div>
         </article>
         <article data-aos="fade-up">
@@ -47,16 +43,19 @@ const Footer = () => {
             <span className="material-symbols-outlined">phone</span>
             <small>+233 (0)544 339 762</small>
           </a>
-          <a>
-            <span className="material-symbols-outlined">mail</span>
-            <small>sales@royalgolfviews.online AVA House, 3rd Floor C66/2</small>
-          </a>
-          <a>
-            <span className="material-symbols-outlined">send</span>
-            <small>Kojo Thompson Rd Adabraka, Accra, Ghana</small>
-          </a>
         </article>
         <article data-aos="fade-up">
+          <h3>Contact Info</h3>
+          <a>
+            <span className="material-symbols-outlined">MAIL</span>
+            <small>sales@royalgolfviews.online</small>
+          </a>
+          <a>
+            <span className="material-symbols-outlined">ADDRESS</span>
+            <small>AVA House, 3rd Floor C66/2 Kojo Thompson Rd Adabraka, Accra, Ghana</small>
+          </a>
+        </article>
+        {/* <article data-aos="fade-up">
           <h3>Get In Touch</h3>
           <form>
             <div>
@@ -75,7 +74,7 @@ const Footer = () => {
               <button>Submit</button>
             </div>
           </form>
-        </article>
+        </article> */}
       </section>
       <hr />
 

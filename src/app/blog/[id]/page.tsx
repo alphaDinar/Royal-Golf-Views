@@ -35,13 +35,15 @@ const Blog = () => {
           <Link href={'/blog'}>
             <MdArrowBackIos style={{ fontSize: '1.5rem' }} />
           </Link>
-          <h4 className='caps'>{decodeURIComponent(id.toString())}<sub></sub></h4>
+          <h4 className='caps'>{post.title && post.title}<sub></sub></h4>
         </header>
 
         {post.title ?
           <section className={styles.blogBox}>
             <div className={styles.currentBlog}>
-              <Image className={styles.bg} alt='topImage' fill sizes='1' src={post.thumbnail} />
+              <div className={styles.imgBox}>
+                <Image className={styles.bg} alt='topImage' fill sizes='1' src={post.thumbnail} />
+              </div>
               <article>
                 <strong>{post.title}</strong>
                 <small>
@@ -56,7 +58,7 @@ const Blog = () => {
                 </p>
               </article>
             </div>
-          </section> : <Waiter/>
+          </section> : <Waiter />
         }
       </section>
 

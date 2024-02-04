@@ -8,15 +8,18 @@ import { fireStoreDB } from "@/firebase/base";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getTimeSince, sortByTime } from "@/external/external";
+import Waiter from "@/components/Waiter/Waiter";
 
 interface Post extends Record<string, any> { }
 const Testimonials = () => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const postStream = onSnapshot(collection(fireStoreDB, 'RGVTestimonials/'), (snapshot) => {
       const postsTemp = snapshot.docs;
       setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime));
+      setIsLoading(false);
     })
 
     return () => postStream();
@@ -38,37 +41,40 @@ const Testimonials = () => {
           <strong>Testimonials</strong>
         </header>
 
-        <section className={styles.con}>
-          <section className={styles.blogs}>
-            <Link href={'/manager/addTestimonial'} className={`${styles.blog} ${styles.add}`}>
-              <span>Add Testimonial</span>
-              <MdAdd/>
-            </Link>
-            {posts.map((post, i) => (
-              <div key={i} className={styles.blog}>
-                <article>
-                  <strong>{post.title}</strong>
-                  <small className="cut3">
-                    {post.excerpt}
-                  </small>
+        {!isLoading ?
+          <section className={styles.con}>
+            <section className={styles.blogs}>
+              <Link href={'/manager/addTestimonial'} className={`${styles.blog} ${styles.add}`}>
+                <span>Add Testimonial</span>
+                <MdAdd />
+              </Link>
+              {posts.map((post, i) => (
+                <div key={i} className={styles.blog}>
+                  <article>
+                    <strong>{post.title}</strong>
+                    <small className="cut3">
+                      {post.excerpt}
+                    </small>
 
-                  <p>
-                    {post.author}
-                    <small>{getTimeSince(post.timestamp)}</small>
-                  </p>
-                  <Image alt="" src={post.authorImage} height={40} width={40} />
-                </article>
+                    <p>
+                      {post.author}
+                      <small>{getTimeSince(post.timestamp)}</small>
+                    </p>
+                    <Image alt="" src={post.authorImage} height={40} width={40} />
+                  </article>
 
-                <nav>
-                  <Link href={`/manager/editTestimonial/${post.id}`}>
-                    <MdEdit  />
-                  </Link>
-                  <MdDeleteOutline onClick={() => { deletePost(post.id) }} />
-                </nav>
-              </div>
-            ))}
-          </section>
-        </section>
+                  <nav>
+                    <Link href={`/manager/editTestimonial/${post.id}`}>
+                      <MdEdit />
+                    </Link>
+                    <MdDeleteOutline onClick={() => { deletePost(post.id) }} />
+                  </nav>
+                </div>
+              ))}
+            </section>
+          </section> :
+          <Waiter />
+        }
 
       </main>
     </section>

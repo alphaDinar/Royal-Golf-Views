@@ -33,25 +33,8 @@ const Blog = () => {
 
         {posts.length > 0 ?
           <section className={styles.blogBox}>
-            <Link href={`/blog/${posts[0].id}`} className={styles.currentBlog}>
-              <Image className={styles.bg} alt='topImage' fill sizes='1' src={posts[0].thumbnail} />
-              <article>
-                <strong>{posts[0].title}</strong>
-                <small>
-                  {posts[0].excerpt}
-                </small>
-                <p>
-                  <Image className={styles.dp} alt='' height={50} width={50} src={posts[0].authorImage} />
-                  <span>
-                    <small>{posts[0].author}</small>
-                    <small>{getTimeSince(posts[0].timestamp)}</small>
-                  </span>
-                </p>
-              </article>
-            </Link>
-
             <section className={styles.blogs}>
-              {posts.slice(1).map((post, i) => (
+              {posts.map((post, i) => (
                 <Link href={`/blog/${post.id}`} key={i} className={styles.blog}>
                   <div className={styles.imgBox}>
                     <Image alt="" fill sizes="1" src={post.thumbnail} />

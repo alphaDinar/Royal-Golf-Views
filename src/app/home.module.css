@@ -14,7 +14,7 @@
   z-index: 100;
 }
 
-.headBox .placeholder{
+.headBox .placeholder {
   object-fit: cover;
   z-index: 10;
   border-radius: 20px;
@@ -60,6 +60,10 @@
   color: white;
   padding: 5px;
   border-radius: 5px;
+}
+
+.inquireBox{
+  cursor: pointer;
 }
 
 .headBoxConNav nav {
@@ -122,7 +126,64 @@
   border-radius: 8px;
 }
 
-.featureBox,.aboutBox, .facilityBox, .blogBox, .testimonialBox {
+.brochureBox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.47);
+}
+.brochureBox, .brochureBox .con{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.brochureBox .sheet{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.brochureBox .imgBox{
+  width: 50%;
+  height: 80vh;
+  position: relative;
+  z-index: 200;
+}
+
+
+.brochureBox legend{
+  background: var(--pass);
+  position: absolute;
+  top: -25px;
+  left: calc(50% - 25px);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 50%;
+  z-index: 10;
+}
+.brochureBox legend svg{
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.brochureBox .imgBox img{
+  object-fit: contain;
+}
+
+.featureBox,
+.aboutBox,
+.facilityBox,
+.blogBox,
+.testimonialBox,
+.mapBox .contactCon {
   width: 80%;
   padding-left: 10%;
   padding-right: 10%;
@@ -138,12 +199,15 @@
   align-items: center;
 }
 
-.featureBox legend:nth-last-child(1),.facilityBox sub:nth-last-child(1){
+.featureBox legend:nth-last-child(1),
+.facilityBox sub:nth-last-child(1) {
   position: absolute;
   top: 50%;
   left: calc(10% - 25px);
 }
-.featureBox legend:nth-last-child(2), .facilityBox sub:nth-last-child(2){
+
+.featureBox legend:nth-last-child(2),
+.facilityBox sub:nth-last-child(2) {
   position: absolute;
   top: 50%;
   right: calc(10% - 25px);
@@ -183,7 +247,8 @@
 }
 
 
-.aboutBox, .blogBox{
+.aboutBox,
+.blogBox {
   background: #F8F8FF;
   padding-top: 10vh;
   padding-bottom: 10vh;
@@ -192,7 +257,7 @@
   gap: 3rem;
 }
 
-.aboutBox section{
+.aboutBox section {
   height: 45vh;
   width: 100%;
   display: grid;
@@ -202,35 +267,40 @@
 }
 
 
-.aboutBox section .left{
+.aboutBox section .left {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.aboutBox section .left p{
+
+.aboutBox section .left p {
   color: #4F4F4F;
 }
-.aboutBox section .right{
+
+.aboutBox section .right {
   position: relative;
   height: 100%;
 }
-.aboutBox section .right img{
+
+.aboutBox section .right img {
   border-radius: 20px;
   object-fit: cover;
 }
 
-.aboutBox article{
+.aboutBox article {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.aboutBox article p{
+
+.aboutBox article p {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
 }
-.aboutBox article p legend{
+
+.aboutBox article p legend {
   width: 50px;
   height: 50px;
   display: flex;
@@ -239,18 +309,56 @@
   background: var(--pass);
   border-radius: 50%;
 }
-.aboutBox article p legend svg{
+
+.aboutBox article p legend svg {
   font-size: 1.3rem;
   color: white;
 }
 
-.facilityBox, .testimonialBox{
+.showBox {
+  width: 100%;
+  display: grid;
+  background: #F8F8FF;
+  grid-template-columns: 2fr 1.8fr 2fr;
+}
+
+.showSwiper {
+  width: 100%;
+  height: 100%;
+}
+
+.showBox article {
+  padding: 20px;
+}
+
+.showBox article p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.showBox article p span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.showBox article p span svg {
+  color: var(--pass);
+}
+
+.showBox img {
+  object-fit: cover;
+}
+
+.facilityBox,
+.testimonialBox {
   padding-top: 30px;
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: center; 
+  align-items: center;
   position: relative;
 }
 
@@ -258,7 +366,8 @@
   width: 100%;
   height: 200px;
 }
-.facility{
+
+.facility {
   height: calc(100% - 40px);
   padding: 20px;
   background: #2A263C;
@@ -267,7 +376,8 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.facility legend{
+
+.facility legend {
   width: 50px;
   height: 50px;
   border-radius: 10px;
@@ -276,41 +386,48 @@
   justify-content: center;
   background: #151129;
 }
-.facility legend svg{
+
+.facility legend svg {
   font-size: 1.5rem;
   color: var(--pass);
 }
-.facility span{
+
+.facility span {
   color: white;
 }
 
-.blogBox header{
+.blogBox header {
   display: flex;
   justify-content: space-between;
 }
-.blogBox header button{
+
+.blogBox header button {
   background: var(--pass);
   color: white;
   padding: 5px 10px;
   border-radius: 40px;
   cursor: pointer;
 }
-.blogBox section{
+
+.blogBox section {
   width: 100%;
   height: 350px;
   display: grid;
   gap: 25px;
   grid-template-columns: 1fr 1fr;
 }
-.blogBox section a{
+
+.blogBox section a {
   color: black;
 }
-.blogBox section .left{
+
+.blogBox section .left {
   position: relative;
   padding: 20px;
   border-radius: 30px;
 }
-.blogBox section .left article{
+
+.blogBox section .left article {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -324,30 +441,33 @@
   flex-direction: column;
   color: white;
 }
-.blogBox section .left p{
+
+.blogBox section .left p {
   margin-top: 0.5rem;
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
 
-.blogBox section .left p span{
+.blogBox section .left p span {
   display: flex;
   flex-direction: column;
 }
-.blogBox section .left p span sub{
+
+.blogBox section .left p span sub {
   display: block;
   background: white;
   width: 100px;
   height: 1px;
 }
 
-.blogBox section .right{
+.blogBox section .right {
   display: grid;
   align-items: center;
   grid-template-columns: 1fr;
 }
-.nextBlog{
+
+.nextBlog {
   background: rgb(255, 237, 237);
   border-radius: 20px;
   padding: 15px;
@@ -357,25 +477,25 @@
   gap: 1.5rem;
 }
 
-.nextBlog .imgBox{
+.nextBlog .imgBox {
   height: 100%;
   min-width: 140px;
   position: relative;
 }
 
-.nextBlog p{
+.nextBlog p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-} 
+}
 
 
 .testimonialBoxSwiper {
   width: 100%;
   padding-bottom: 40px;
-  height: 270px;
 }
-.testimonial{
+
+.testimonial {
   height: calc(100% - 42px);
   border-radius: 20px;
   padding: 20px;
@@ -386,14 +506,125 @@
   border: 1px solid darkgray;
   color: #000;
 }
-.testimonial article{
+
+.testimonial article {
   display: flex;
   gap: 0.8rem;
   align-items: center;
 }
-.testimonial article p{
+
+.testimonial article p {
   display: flex;
   flex-direction: column;
+}
+
+
+.mapBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: whitesmoke;
+  background: #F1F3F4;
+}
+
+.mapBox .contactCon{
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  width: 80%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+
+.mapBox .contactCon .left{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+/* .mapBox .contactCon .left */
+.mapBox .contactCon .left div{
+  display: flex;
+  gap: 0.5rem;
+}
+.mapBox .contactCon .left div svg{
+  font-size: 1.3rem;
+  color: rgb(118, 118, 118);
+}
+
+.mapBox .contactCon .left article{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.mapBox .contactCon .left article a{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: black;
+}
+
+.mapBox .contactCon .right{
+  margin-top: auto;
+  margin-left: auto;
+}
+.mapBox .contactCon .right form{
+  position: relative;
+  padding: 20px;
+  background: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  border-radius: 10px;
+  background: var(--theme);
+}
+.mapBox .contactCon .right form legend{
+  position: absolute;
+  width: 40px;
+  height:40px;
+  background: var(--theme);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  top: -20px;
+  left: calc(50% - 20px);
+  display: flex;
+  rotate: -90deg;
+  align-items: center;
+  justify-content: center;
+}
+.mapBox .contactCon .right form legend svg{
+  font-size: 1.4rem;
+  color: wheat;
+}
+
+.mapBox .contactCon .right form div{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.mapBox .contactCon .right form div span{
+  color: white;
+  font-size: 0.9rem;
+}
+.mapBox .contactCon .right form div input, .mapBox .contactCon .right form div textarea{
+  width: 300px;
+  padding: 10px 10px;
+  background: var(--theme);
+  border: 2px solid wheat;
+  color: rgb(249, 234, 208);
+}
+.mapBox .contactCon .right form div textarea{
+  height: 100px;
+  resize: none;
+}
+
+.mapBox .contactCon .right form button{
+  background: wheat;
+  padding: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 40px;
 }
 
 
@@ -404,37 +635,89 @@
 }
 
 @media all and (max-width:1000px) {
-  .featureBox{
+  .featureBox {
     padding-top: 0;
     padding-bottom: 0;
   }
-  .featureBox legend:nth-last-child(1),.facilityBox sub:nth-last-child(1){
+
+  .featureBox legend:nth-last-child(1),
+  .facilityBox sub:nth-last-child(1) {
     display: none;
   }
-  .featureBox legend:nth-last-child(2), .facilityBox sub:nth-last-child(2){
+
+  .featureBox legend:nth-last-child(2),
+  .facilityBox sub:nth-last-child(2) {
     display: none;
   }
-  
-  .featureBox,.aboutBox, .facilityBox,.blogBox, .testimonialBox {
+
+  .featureBox,
+  .aboutBox,
+  .facilityBox,
+  .blogBox,
+  .testimonialBox, 
+  .mapBox .contactCon
+  {
     width: calc(100% - 40px);
     padding-right: 20px;
     padding-left: 20px;
   }
-  .aboutBox section, .blogBox section{
+
+  .mapBox .contactCon{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  .mapBox .contactCon .left{
+    gap: 0.8rem;
+  }
+  .mapBox .contactCon .left, .mapBox .contactCon .left > *{
+    text-align: center;
+  }
+  .mapBox .contactCon .left h3, .mapBox .contactCon .left article{
+    align-items: center;
+  }
+  .mapBox .contactCon .left div{
+    justify-content: center;
+  }
+  .mapBox .contactCon .right{
+    margin: auto;
+  }
+
+  .aboutBox section,
+  .blogBox section {
     height: auto;
     grid-template-columns: 1fr;
   }
-  .blogBox section .left{
+
+  .blogBox section .left {
     height: 300px;
   }
-  .aboutBox section .left{
+
+  .aboutBox section .left {
     align-items: center;
     text-align: center;
   }
-  .aboutBox section .left h3{
+
+  .aboutBox section .left h3 {
     align-items: center;
   }
-  .aboutBox section .right{
+
+  .aboutBox section .right {
+    height: 300px;
+  }
+}
+
+@media all and (max-width:950px) {
+  .showBox {
+    grid-template-columns: 1fr;
+  }
+
+  .showBox article {
+    margin: auto;
+  }
+
+  .showSwiper {
     height: 300px;
   }
 }
@@ -488,10 +771,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
   }
-
-  .testimonialBoxSwiper {
-    height: 220px;
-  }
 }
 
 
@@ -499,15 +778,25 @@
   .featureBoxSwiper {
     height: 250px;
   }
-  .aboutBox, .blogBox{
+
+  .aboutBox,
+  .blogBox {
     gap: 1rem;
     padding-top: 5vh;
     padding-bottom: 5vh;
   }
-  .aboutBox article{
+
+  .aboutBox article {
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr;
+  }
+
+  .brochureBox .imgBox legend{
+    top: calc(50% - 25px);
+  }
+  .brochureBox .imgBox{
+    width: 80%;
   }
 }
 
@@ -535,20 +824,33 @@
     width: calc(100% - 20px);
     padding: 0 10px 20px 10px;
   }
+
   .featureBoxSwiper {
     height: 230px;
   }
+
   .facilityBoxSwiper {
     width: 100%;
     height: 150px;
   }
-  .facility{
+
+  .facility {
     align-items: center;
     text-align: center;
   }
 }
 
 @media all and (max-width:300px) {
+  .headBoxConNav .logoBox{
+    width: 50px;
+    height: 100%;
+  }
+  .nextBlog .imgBox {
+    min-width: 100px;
+  }
+  .mapBox .contactCon .right form  div input, .mapBox .contactCon .right form div textarea{
+    width: 180px;
+  }
   .headBox {
     height: 55vh;
   }

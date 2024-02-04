@@ -3,7 +3,7 @@ import styles from './home.module.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdOutline3DRotation, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi } from 'react-icons/md';
+import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdOutline3DRotation, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi, MdPhone, MdMail, MdLocationPin, MdSend } from 'react-icons/md';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css/pagination';
@@ -19,11 +19,19 @@ import { fireStoreDB } from '@/firebase/base';
 import { sortByTime, getTimeSince } from '@/external/external';
 import Waiter from '@/components/Waiter/Waiter';
 import introPlace from '../../public/introPlace.JPG';
+import brochure from '../../public/brochure.jpg';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { featureList, galleryListA, galleryListB } from '@/external/lists';
+import { FaRegDotCircle } from 'react-icons/fa';
+import { FaFacebookF, FaGoogle, FaInstagram } from 'react-icons/fa6';
+import { HiOutlineCloudDownload } from 'react-icons/hi';
 
 
 interface Post extends Record<string, any> { }
 
 const Home = () => {
+  const [brochureToggled, setBrochureToggled] = useState(false);
   const introVideoRef = useRef<HTMLVideoElement>(null);
   const featureImageRef = useRef<Array<HTMLImageElement | null>>([]);
   const [pageLoaded, setPageLoaded] = useState(false);
@@ -36,6 +44,17 @@ const Home = () => {
   const [gallerySlideGap, setGallerySlideGap] = useState(25);
   const [posts, setPosts] = useState<Post[]>([]);
   const [testimonials, setTestimonials] = useState<Post[]>([]);
+
+
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
+  const [email, setEmail] = useState('');
+  const [inquiry, setInquiry] = useState('');
+
+  const toggleBrochure = () => {
+    brochureToggled ? setBrochureToggled(false) : setBrochureToggled(true);
+  }
+
 
   const toggleMenu = () => {
     if (menuToggled) {
@@ -54,6 +73,9 @@ const Home = () => {
 
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
 
     setTimeout(() => {
       handleIntroVideoPass();
@@ -105,14 +127,14 @@ const Home = () => {
     })
 
     return () => {
-      postStream(); 
+      postStream();
       testimonialStream();
     };
   }, [introVideoRef])
 
 
   const gallerySwiperPrev = () => {
-    console.log(posts)
+    console.log(gallerySwiper.current)
     if (gallerySwiper.current) {
       gallerySwiper.current.swiper.slidePrev();
     }
@@ -135,7 +157,7 @@ const Home = () => {
     }
   }
 
-  const featureList = [
+  const topFeatureList = [
     {
       img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695728/RGV/balcony_fyfudq.jpg',
       tag: 'Balcony',
@@ -246,6 +268,10 @@ const Home = () => {
   ];
 
 
+  const sendMail = () => {
+
+  }
+
 
   return (
     <main>
@@ -280,12 +306,12 @@ const Home = () => {
 
             <nav style={{ left: menuPosition }}>
               <MdMenu onClick={toggleMenu} />
-              <Link href={'/'}> <span>Home</span> </Link>
-              <Link href={'/about'}> <span>About Us</span> </Link>
-              <Link href={'/gallery'}> <span>Gallery</span> </Link>
-              <Link href={'/blog'}> <span>Blog</span> </Link>
-              <Link href={'#footerBox'}> <span>Contact</span> </Link>
-              <Link href={'/contact'} className={styles.inquireBox}> <span>Inquire</span> </Link>
+              <Link href={'/'} data-aos="fade-down"> <span>Home</span> </Link>
+              <Link href={'/about'} data-aos="fade-down"> <span>About Us</span> </Link>
+              <Link href={'/gallery'} data-aos="fade-down"> <span>Gallery</span> </Link>
+              <Link href={'/blog'} data-aos="fade-down"> <span>Blog</span> </Link>
+              <Link href={'#mapBox'} data-aos="fade-down"> <span>Contact</span> </Link>
+              <legend data-aos="fade-right" onClick={() => toggleBrochure()} className={styles.inquireBox}> <span>E-Brochure</span> </legend>
             </nav>
           </div>
 
@@ -316,6 +342,14 @@ const Home = () => {
         </section>
       </section>
 
+      <section className={styles.brochureBox} style={brochureToggled ? { display: 'flex' } : { display: 'none' }}>
+        <section className={styles.sheet} onClick={() => toggleBrochure()}></section>
+        <div className={styles.imgBox}>
+          <legend><HiOutlineCloudDownload/></legend>
+          <Image alt='' fill sizes='1' src={brochure} />
+        </div>
+      </section>
+
       <section className={styles.featureBox}>
         <h4 className='caps'>Top Features</h4>
         <Swiper
@@ -329,7 +363,7 @@ const Home = () => {
           style={{ width: '100%' }}
           className={styles.featureBoxSwiper}
         >
-          {featureList.map((item, i) => (
+          {topFeatureList.map((item, i) => (
             <SwiperSlide key={i}>
               <div className={styles.feature}>
                 <Image
@@ -358,7 +392,7 @@ const Home = () => {
 
       <section className={styles.aboutBox}>
         <section>
-          <div className={styles.left}>
+          <div className={styles.left} data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out">
             <h3>Own A Home With A Luxury Setting Today. <sub></sub></h3>
             <p>
               Welcome to a residence where luxury meets lifestyle. This impeccably designed apartment offers an unparalleled blend of sophistication and comfort, providing you with an exquisite living experience.
@@ -373,25 +407,69 @@ const Home = () => {
         </section>
 
         <article>
-          <p>
+          <p data-aos="fade-up" data-aos-delay="80">
             <legend>
               <MdHome />
             </legend>
             <span>Forever Ownership</span>
           </p>
-          <p>
+          <p data-aos="fade-up" data-aos-delay="100">
             <legend>
               <MdDesignServices />
             </legend>
             <span>Customize to the fullest</span>
           </p>
-          <p>
+          <p data-aos="fade-up" data-aos-delay="120">
             <legend>
               <MdSupervisedUserCircle />
             </legend>
             <span>You control when you buy</span>
           </p>
         </article>
+      </section>
+
+
+      <section className={styles.showBox}>
+        <Swiper
+          modules={[Autoplay]}
+          loop={true}
+          speed={700}
+          autoplay={{
+            delay: 3500,
+          }}
+          className={styles.showSwiper}
+        >
+          {galleryListA.map((el, i) => (
+            <SwiperSlide key={i}>
+              <Image alt='' fill sizes='1' src={el.src} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <article>
+          <p>
+            {featureList.map((el, i) => (
+              <span key={i} data-aos="fade-right">
+                <FaRegDotCircle />
+                {el.tag}
+              </span>
+            ))}
+          </p>
+        </article>
+        <Swiper
+          modules={[Autoplay]}
+          loop={true}
+          speed={700}
+          autoplay={{
+            delay: 3500,
+          }}
+          className={styles.showSwiper}
+        >
+          {galleryListB.map((el, i) => (
+            <SwiperSlide key={i}>
+              <Image alt='' fill sizes='1' src={el.src} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </section>
 
       <section className={styles.facilityBox}>
@@ -491,57 +569,104 @@ const Home = () => {
           : <Waiter />
         }
       </section>
-        
 
-      {testimonials.length > 0 ? 
-      <section className={styles.testimonialBox}>
-        <h4 className='caps'>Testimonials</h4>
-        <p style={{ textAlign: 'center' }}>Don&apos;t just take our word for it. Check out what our residents are saying about their experience buying, selling, or renting with Royal Golf Views.</p>
-        <Swiper
-          modules={[EffectFade, Pagination, Autoplay]}
-          // loop={true}
-          speed={1000}
-          pagination={{
-            dynamicBullets: true,
-          }}
-          // ref={testimonialSwiper}
-          slidesPerView={testimonialSlideNum}
-          spaceBetween={gallerySlideGap}
-          autoplay={{ delay: 3500, disableOnInteraction: true, pauseOnMouseEnter: true }}
-          style={{ width: '100%' }}
-          className={styles.testimonialBoxSwiper}
-        >
-          {testimonials.map((el)=>(
-          <SwiperSlide>
-            <Link href='' className={styles.testimonial}>
-              <MdFormatQuote />
-              <span className='cut6'>
-                {el.excerpt}
-              </span>
-              <article>
-                <Image
-                  alt='dp'
-                  src={el.authorImage}
-                  height={50}
-                  width={50}
-                  style={{ borderRadius: '50%', objectFit: 'cover' }}
-                />
-                <p>
-                  <strong>{el.author}</strong>
-                  <small style={{ color: 'darkgray' }}>{el.position}</small>
-                </p>
-              </article>
-            </Link>
-          </SwiperSlide>
-          ))}
-        </Swiper>
+
+      {testimonials.length > 0 ?
+        <section className={styles.testimonialBox}>
+          <h4 className='caps'>Testimonials</h4>
+          <p style={{ textAlign: 'center' }}>Don&apos;t just take our word for it. Check out what our residents are saying about their experience buying, selling, or renting with Royal Golf Views.</p>
+          <Swiper
+            modules={[EffectFade, Pagination, Autoplay]}
+            // loop={true}
+            speed={1000}
+            pagination={{
+              dynamicBullets: true,
+            }}
+            // ref={testimonialSwiper}
+            slidesPerView={testimonialSlideNum}
+            spaceBetween={gallerySlideGap}
+            autoplay={{ delay: 3500, disableOnInteraction: true, pauseOnMouseEnter: true }}
+            style={{ width: '100%' }}
+            className={styles.testimonialBoxSwiper}
+          >
+            {testimonials.map((el, i) => (
+              <SwiperSlide key={i}>
+                <Link href='' className={styles.testimonial}>
+                  <MdFormatQuote />
+                  <span className=''>
+                    {el.excerpt}
+                  </span>
+                  <article>
+                    <Image
+                      alt='dp'
+                      src={el.authorImage}
+                      height={50}
+                      width={50}
+                      style={{ borderRadius: '50%', objectFit: 'cover' }}
+                    />
+                    <p>
+                      <strong>{el.author}</strong>
+                      <small style={{ color: 'darkgray' }}>{el.position}</small>
+                    </p>
+                  </article>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+        : <Waiter />
+      }
+
+
+      <section className={styles.mapBox} id='mapBox'>
+        <section className={styles.contactCon}>
+          <section className={styles.left}>
+            <h3>Get in Touch <sub></sub> </h3>
+            <span>
+              Make an inquiry on any details or concerns you may have.
+            </span>
+            <div>
+              <Link href={''}><FaFacebookF /></Link>
+              <Link href={''}><FaInstagram /></Link>
+              <Link href={''}><FaGoogle /></Link>
+            </div>
+            <small>Hours : Weekdays (8 AM - 7PM) Weekends (10 AM - 5PM)</small>
+            <article>
+              <Link href={''}><MdPhone />  <span>+233 (0)544 339 762</span></Link>
+              <Link href={''}><MdMail />  <span>sales@royalgolfviews.online</span></Link>
+              <Link href={''}><MdLocationPin />  <span>34-35 John Owusu Addo Close, Ridge, Kumasi, Ghana</span></Link>
+            </article>
+          </section>
+          <section className={styles.right}>
+            <form data-aos="fade-up" onSubmit={(e) => { e.preventDefault(); sendMail() }}>
+              <legend>
+                <MdSend />
+              </legend>
+              <div>
+                <span>Name</span>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+              </div>
+              <div>
+                <span>Mobile Number</span>
+                <input type="text" value={contact} onChange={(e) => setContact(e.target.value)} required />
+              </div>
+              <div>
+                <span>E-Mail</span>
+                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              </div>
+              <div>
+                <span>Inquiry</span>
+                <textarea value={inquiry} onChange={(e) => setInquiry(e.target.value)} required></textarea>
+              </div>
+              <button type='submit'>Send</button>
+            </form>
+          </section>
+        </section>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.7896554104227!2d-1.6257415251668679!3d6.672964993322162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb96c5ebefb6cd%3A0x86a41423889ab7e1!2sRoyal%20Golf%20Views%20Luxury%20Apartments!5e0!3m2!1sen!2sgh!4v1705084024055!5m2!1sen!2sgh"
+          width="100%" height="450"
+          loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+        </iframe>
       </section>
-      : <Waiter/>
-    }
-
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.7896554104227!2d-1.6257415251668679!3d6.672964993322162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb96c5ebefb6cd%3A0x86a41423889ab7e1!2sRoyal%20Golf%20Views%20Luxury%20Apartments!5e0!3m2!1sen!2sgh!4v1705084024055!5m2!1sen!2sgh"
-        width="100%" height="450"
-        loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
       <Footer />
 

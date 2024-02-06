@@ -16,7 +16,7 @@ const Testimonials = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const postStream = onSnapshot(collection(fireStoreDB, 'RGVTestimonials/'), (snapshot) => {
+    const postStream = onSnapshot(collection(fireStoreDB, 'Testimonials/'), (snapshot) => {
       const postsTemp = snapshot.docs;
       setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime));
       setIsLoading(false);

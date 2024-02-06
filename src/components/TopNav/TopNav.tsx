@@ -40,9 +40,10 @@ const TopNav = () => {
           <nav style={{ left: menuPosition }}>
             <MdMenu onClick={toggleMenu} />
             <Link href={'/'}> <span>Home</span> </Link>
-            <Link href={'/about'}> <span>About Us</span> </Link>
+            {/* <Link href={'/about'}> <span>About Us</span> </Link> */}
             <Link href={'/gallery'}> <span>Gallery</span> </Link>
             <Link href={'/blog'}> <span>Blog</span> </Link>
+            <Link href={'/pricing'}> <span>Pricing</span> </Link>
             <Link href={'/#mapBox'}> <span>Contact</span> </Link>
             {/* <Link href={'/contact'} className={styles.inquireBox}> <span>Inquire</span> </Link> */}
           </nav>

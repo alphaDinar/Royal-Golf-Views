@@ -5,6 +5,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   useEffect(() => {
@@ -39,10 +40,10 @@ const Footer = () => {
         <article data-aos="fade-up">
           <h3>Contact Agent</h3>
           <small>Royal Golf Views has apartments and penthouses for sale and rent in Ghana.</small>
-          <a>
+          <Link href={'tel:233544339762'}>
             <span className="material-symbols-outlined">phone</span>
-            <small>+233 (0)544 339 762</small>
-          </a>
+            <small>+233 544 339 762</small>
+          </Link>
         </article>
         <article data-aos="fade-up">
           <h3>Contact Info</h3>

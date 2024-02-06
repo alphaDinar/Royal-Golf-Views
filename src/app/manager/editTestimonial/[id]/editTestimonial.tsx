@@ -18,7 +18,7 @@ export const EditTest = async(data : FormData, id : string,authorUrlFinal : stri
     const authorUrl = await getDownloadURL(authorRes.ref);
     authorUrlFinal = authorUrl;
   }
-  await updateDoc(doc(fireStoreDB, 'RGVTestimonials/' + id), {
+  await updateDoc(doc(fireStoreDB, 'Testimonials/' + id), {
     excerpt : excerpt,
     author : author,
     position : position,

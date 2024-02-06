@@ -29,7 +29,7 @@ const Blog = () => {
     const confirm = window.confirm('Are you sure you want to delete Post ?');
     if (confirm) {
       console.log('started');
-      deleteDoc(doc(fireStoreDB, 'RGVPosts/' + id));
+      deleteDoc(doc(fireStoreDB, 'Posts/' + id));
     }
   }
 

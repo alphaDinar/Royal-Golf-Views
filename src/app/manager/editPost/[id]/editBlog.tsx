@@ -28,7 +28,7 @@ export const EditBlog = async(data : FormData, id : string,authorUrlFinal : stri
     thumbnailUrlFinal = authorUrl;
   }
 
-  await updateDoc(doc(fireStoreDB, 'RGVPosts/' + id), {
+  await updateDoc(doc(fireStoreDB, 'Posts/' + id), {
     title : title,
     excerpt : excerpt,
     author : author,

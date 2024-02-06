@@ -33,7 +33,7 @@ export const CreateBlog = async (data: FormData) => {
     thumbnailUrlFinal = authorUrl;
   }
 
-  await setDoc(doc(fireStoreDB, 'RGVPosts/' + pid), {
+  await setDoc(doc(fireStoreDB, 'Posts/' + pid), {
     title: title,
     excerpt: excerpt,
     author: author,

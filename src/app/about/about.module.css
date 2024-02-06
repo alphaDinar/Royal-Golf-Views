@@ -1,12 +1,12 @@
 
 .topHeader{
-  width: calc(100% - 40px);
-  margin: 0 20px;
+  width: calc(80%);
+  margin: 0 auto;
 }
 .topBox{
   position: relative;
-  width: calc(100% - 40px);
-  margin: 20px;
+  width: calc(80%);
+  margin: 20px auto;
   height: 50vh;
   border-radius: 20px;
 }
@@ -80,9 +80,9 @@
     border-radius: 20px;
     z-index: 100;
   }
-  .infoBox{
+  .infoBox, .topBox, .topHeader{
     width: 95%;
-    margin: 80px 2.5%;
+    margin: 20px auto;
   }
 }
 

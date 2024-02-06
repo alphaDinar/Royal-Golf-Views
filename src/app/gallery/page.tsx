@@ -12,6 +12,7 @@ import 'swiper/css';
 import Footer from '@/components/Footer/Footer';
 import Link from 'next/link';
 import { MdArrowBack, MdArrowForward, MdNorth, MdPlayArrow, MdSouth } from 'react-icons/md';
+import three from '../../../public/3d.jpg';
 
 const Gallery = () => {
   const [popupToggled, setPopupToggled] = useState(false);
@@ -281,6 +282,10 @@ const Gallery = () => {
           </Swiper>
         </div>
       </section>
+
+      {/* <section className={styles.thirdBox}>
+        <Image alt='' src={three} width={300} height={200} />
+      </section> */}
 
       <Footer />
     </main>

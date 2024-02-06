@@ -78,7 +78,7 @@ const Home = () => {
 
     setTimeout(() => {
       handleIntroVideoPass();
-    }, 8000)
+    }, 6000)
 
     if (introVideoRef.current) {
       if (introVideoRef.current.readyState >= 3) {
@@ -115,12 +115,12 @@ const Home = () => {
       }
     }
 
-    const postStream = onSnapshot(collection(fireStoreDB, '/RGVPosts'), (snapshot) => {
+    const postStream = onSnapshot(collection(fireStoreDB, '/Posts'), (snapshot) => {
       const postsTemp = snapshot.docs;
       setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime).slice(0, 3));
     })
 
-    const testimonialStream = onSnapshot(collection(fireStoreDB, '/RGVTestimonials'), (snapshot) => {
+    const testimonialStream = onSnapshot(collection(fireStoreDB, '/Testimonials'), (snapshot) => {
       const postsTemp = snapshot.docs;
       setTestimonials(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime).slice(0, 3));
     })
@@ -305,12 +305,13 @@ const Home = () => {
 
             <nav style={{ left: menuPosition }}>
               <MdMenu onClick={toggleMenu} />
-              <Link href={'/'} data-aos="fade-down"> <span>Home</span> </Link>
-              <Link href={'/about'} data-aos="fade-down"> <span>About Us</span> </Link>
               <Link href={'/gallery'} data-aos="fade-down"> <span>Gallery</span> </Link>
               <Link href={'/blog'} data-aos="fade-down"> <span>Blog</span> </Link>
+              <Link href={'/pricing'} data-aos="fade-down"> <span>Pricing</span> </Link>
               <Link href={'#mapBox'} data-aos="fade-down"> <span>Contact</span> </Link>
-              <legend data-aos="fade-right" onClick={() => toggleBrochure()} className={styles.inquireBox}> <span>E-Brochure</span> </legend>
+              {/* <Link href={''}><span>Virtual Tour</span></Link> */}
+              <legend style={{ cursor: 'pointer' }} data-aos="fade-right" onClick={() => toggleBrochure()} > <span>E-Brochure</span> </legend>
+              <Link href={'/vTour'} data-aos="fade-down" className={styles.inquireBox}> <span>Virtual Tour</span> </Link>
             </nav>
           </div>
 
@@ -344,7 +345,7 @@ const Home = () => {
       <section className={styles.brochureBox} style={brochureToggled ? { display: 'flex' } : { display: 'none' }}>
         <section className={styles.sheet} onClick={() => toggleBrochure()}></section>
         <div className={styles.imgBox}>
-          <legend><HiOutlineCloudDownload/></legend>
+          <legend><HiOutlineCloudDownload /></legend>
           <Image alt='' fill sizes='1' src={brochure} />
         </div>
       </section>
@@ -394,7 +395,7 @@ const Home = () => {
           <div className={styles.left} data-aos="fade-up" data-aos-delay="100" data-aos-easing="ease-in-out">
             <h3>Own A Home With A Luxury Setting Today. <sub></sub></h3>
             <p>
-              Welcome to a residence where luxury meets lifestyle. This impeccably designed apartment offers an unparalleled blend of sophistication and comfort, providing you with an exquisite living experience.
+              Welcome to a residence where luxury meets lifestyle. This impeccably designed apartments offer an unparalleled blend of sophistication and comfort, providing you with an exquisite living experience.
             </p>
           </div>
           <div className={styles.right}>
@@ -410,19 +411,19 @@ const Home = () => {
             <legend>
               <MdHome />
             </legend>
-            <span>Forever Ownership</span>
+            <span>Forever Ownership.</span>
           </p>
           <p data-aos="fade-up" data-aos-delay="100">
             <legend>
               <MdDesignServices />
             </legend>
-            <span>Customize to the fullest</span>
+            <span>Customized to the fullest.</span>
           </p>
           <p data-aos="fade-up" data-aos-delay="120">
             <legend>
               <MdSupervisedUserCircle />
             </legend>
-            <span>You control when you buy</span>
+            <span>Live the dream.</span>
           </p>
         </article>
       </section>
@@ -515,7 +516,7 @@ const Home = () => {
 
         {posts.length > 0 ?
           <section>
-            <Link href={`/blog/${posts[0].id}`} className={styles.left}>
+            <Link href={{ pathname: '/readBlog', query: { post: JSON.stringify(posts[0]) } }} className={styles.left}>
               <Image alt='' src={posts[0].thumbnail}
                 fill
                 sizes='1'
@@ -546,7 +547,7 @@ const Home = () => {
             </Link>
             <section className={styles.right}>
               {posts.slice(1, 3).map((post, i) => (
-                <Link href={`/blog/${post.id}`} key={i} className={styles.nextBlog}>
+                <Link href={{ pathname: '/readBlog', query: { post: JSON.stringify(post) } }} key={i} className={styles.nextBlog}>
                   <div className={styles.imgBox}>
                     <Image
                       alt='dp'

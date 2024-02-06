@@ -15,7 +15,7 @@ const Blog = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    const postStream = onSnapshot(collection(fireStoreDB, 'RGVPosts/'), (snapshot) => {
+    const postStream = onSnapshot(collection(fireStoreDB, 'Posts/'), (snapshot) => {
       const postsTemp = snapshot.docs;
       setPosts(postsTemp.map((el) => ({ id: el.id, ...el.data() }) as Post).sort(sortByTime));
     })
@@ -35,7 +35,7 @@ const Blog = () => {
           <section className={styles.blogBox}>
             <section className={styles.blogs}>
               {posts.map((post, i) => (
-                <Link href={`/blog/${post.id}`} key={i} className={styles.blog}>
+                <Link href={{pathname : '/readBlog', query : {post : JSON.stringify(post)}}} key={i} className={styles.blog}>
                   <div className={styles.imgBox}>
                     <Image alt="" fill sizes="1" src={post.thumbnail} />
                   </div>

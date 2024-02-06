@@ -1,19 +1,18 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import {GoogleAuthProvider, getAuth} from "firebase/auth";
-import {getDatabase} from "firebase/database";
-import {getFirestore} from "firebase/firestore";
-import {getStorage} from "firebase/storage";
+import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDKbmFG0NFdZvPyyBHVIuJitJJmdnehn4o",
-  authDomain: "smarthotel-7d5d0.firebaseapp.com",
-  databaseURL: "https://smarthotel-7d5d0-default-rtdb.firebaseio.com",
-  projectId: "smarthotel-7d5d0",
-  storageBucket: "smarthotel-7d5d0.appspot.com",
-  messagingSenderId: "403532820903",
-  appId: "1:403532820903:web:188a1e991f64c7ccaa8682",
-  measurementId: "G-2T8GL46KZ5"
+  apiKey: "AIzaSyDlGMsXRJ2KyRALYdSHZh4qRYq-CKDb1Tg",
+  authDomain: "royal-golf-views.firebaseapp.com",
+  projectId: "royal-golf-views",
+  storageBucket: "royal-golf-views.appspot.com",
+  messagingSenderId: "951654412285",
+  appId: "1:951654412285:web:3a2ced24fe9b4b4ebdb394",
+  measurementId: "G-YC7WEMGQXB"
 };
 
 // Initialize Firebase

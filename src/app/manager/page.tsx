@@ -8,8 +8,8 @@ import { useEffect } from "react";
 import { GrAnnounce } from "react-icons/gr";
 
 const Manager = async () => {
-  const postsCounter = (await getDocs(collection(fireStoreDB, 'RGVPosts/'))).size;
-  const testimonialsCounter = (await getDocs(collection(fireStoreDB, 'RGVTestimonials/'))).size;
+  const postsCounter = (await getDocs(collection(fireStoreDB, 'Posts/'))).size;
+  const testimonialsCounter = (await getDocs(collection(fireStoreDB, 'Testimonials/'))).size;
 
   return (
     <section className="managerPage">
@@ -58,7 +58,7 @@ const Manager = async () => {
               <div>
                 <MdPhone />
                 <span>Contact</span>
-                <strong>28</strong>
+                <strong>0</strong>
               </div>
               <Link className={styles.itemTag} href={'manager/addContact'}>
                 <MdAdd />

@@ -1,59 +1,53 @@
-'use client'
+// 'use client'
 import TopNav from '@/components/TopNav/TopNav';
-import { useEffect, useState } from 'react';
-import { collection, onSnapshot } from 'firebase/firestore';
-import styles from '../blog.module.css';
-import { fireStoreDB } from '@/firebase/base';
+import styles from '../blog/blog.module.css';
 import { getTimeSince, sortByTime } from '@/external/external';
 import Image from 'next/image';
 import Footer from '@/components/Footer/Footer';
-import { useParams } from 'next/navigation';
-import { GetPost } from '@/app/manager/editPost/[id]/getPost';
 import { MdArrowBack, MdArrowBackIos } from 'react-icons/md';
 import Link from 'next/link';
 import Waiter from '@/components/Waiter/Waiter';
 
 interface Post extends Record<string, any> { }
-const Blog = () => {
-  const { id } = useParams();
-  const [post, setPost] = useState<Post>({});
+const ReadBlog = ({ searchParams }: { searchParams: { post: string } }) => {
 
-  useEffect(() => {
-    const getPost = async () => {
-      const post = await GetPost(decodeURIComponent(id.toString()));
-      setPost(post);
-    }
-    getPost();
-  }, [id])
+  const postObj = JSON.parse(searchParams.post);
+
+  const title = postObj.title;
+  const excerpt = postObj.excerpt;
+  const author = postObj.author;
+  const authorImage = postObj.authorImage;
+  const thumbnail = postObj.thumbnail;
+  const timestamp = postObj.timestamp;
+
 
   return (
     <main className={styles.blogBoxHolder}>
       <TopNav />
-
       <section className={styles.blogCon}>
         <header>
           <Link href={'/blog'}>
             <MdArrowBackIos style={{ fontSize: '1.5rem' }} />
           </Link>
-          <h4 className='caps'>{post.title && post.title}<sub></sub></h4>
+          <h4 className='caps'>{title && title}<sub></sub></h4>
         </header>
 
-        {post.title ?
+        {title ?
           <section className={styles.blogBox}>
             <div className={styles.currentBlog}>
               <div className={styles.imgBox}>
-                <Image className={styles.bg} alt='topImage' fill sizes='1' src={post.thumbnail} />
+                <Image className={styles.bg} alt='topImage' fill sizes='1' src={thumbnail} />
               </div>
               <article>
-                <strong>{post.title}</strong>
+                <strong>{title}</strong>
                 <small>
-                  {post.excerpt}
+                  {excerpt}
                 </small>
                 <p>
-                  <Image className={styles.dp} alt='' height={50} width={50} src={post.authorImage} />
+                  <Image className={styles.dp} alt='' height={50} width={50} src={authorImage} />
                   <span>
-                    <small>{post.author}</small>
-                    <small>{getTimeSince(post.timestamp)}</small>
+                    <small>{author}</small>
+                    <small>{getTimeSince(timestamp)}</small>
                   </span>
                 </p>
               </article>
@@ -67,4 +61,4 @@ const Blog = () => {
   );
 }
 
-export default Blog;
+export default ReadBlog;

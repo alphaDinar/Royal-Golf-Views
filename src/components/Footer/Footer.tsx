@@ -31,30 +31,30 @@ const Footer = () => {
               <span>ADDRESS</span>
               <small>34-35 John Owusu Addo Close, Ridge, Kumasi, Ghana</small>
             </a>
-            {/* <a>
-              <span>PHONE</span>
-              <small>+233 (0)544 339 762</small>
-            </a> */}
+            <a target='_blank' href='https://www.google.com/maps/search/?api=1&query=David Walter Ghana Limited, Accra, Ghana'>
+              <span >ADDRESS</span>
+              <small>AVA House, 3rd Floor C66/2 Kojo Thompson Rd Adabraka, Accra, Ghana</small>
+            </a>
           </div>
         </article>
         <article data-aos="fade-up">
           <h3>Contact Agent</h3>
           <small>Royal Golf Views has apartments and penthouses for sale and rent in Ghana.</small>
           <Link href={'tel:233544339762'}>
-            <span className="material-symbols-outlined">phone</span>
+            <span >phone</span>
             <small>+233 544 339 762</small>
           </Link>
         </article>
         <article data-aos="fade-up">
-          <h3>Contact Info</h3>
+          <h3>For More Info</h3>
           <Link href={'/'}>
-            <span className="material-symbols-outlined">MAIL</span>
+            <span >MAIL</span>
             <small>sales@royalgolfviews.com</small>
           </Link>
-          <a target='_blank' href='https://www.google.com/maps/search/?api=1&query=David Walter Ghana Limited, Accra, Ghana'>
-            <span className="material-symbols-outlined">ADDRESS</span>
-            <small>AVA House, 3rd Floor C66/2 Kojo Thompson Rd Adabraka, Accra, Ghana</small>
-          </a>
+          <Link href={''}>
+            <span >WEBSITE</span>
+            <small>royalgolfviews.com</small>
+          </Link>
         </article>
         {/* <article data-aos="fade-up">
           <h3>Get In Touch</h3>

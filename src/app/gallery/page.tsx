@@ -33,14 +33,14 @@ const Gallery = () => {
     { tag: 'Landscape', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView4_k5coyb.jpg' },
     { tag: 'Closet', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695725/RGV/closet1_ot5cab.jpg' },
     { tag: 'Living Room', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/living4_sgfz7c.jpg' },
-    { tag: 'Front View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695724/RGV/frontView1_vba9rx.jpg' },
+    { tag: 'Entrance', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695724/RGV/frontView1_vba9rx.jpg' },
     { tag: 'Car Park', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/parkView1_yx1fin.jpg' },
     { tag: 'Washroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695724/RGV/bath2_frtrru.jpg' },
     { tag: 'Bedroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/living2_sfipyh.jpg' },
-    { tag: 'Compound View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView5_aowvt2.jpg' },
-    { tag: 'Compound View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695728/RGV/comView6_vqsybj.jpg' },
-    { tag: 'Compound View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/comView2_st9ut2.jpg' },
-    { tag: 'Compound View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView1_eubbrw.jpg' },
+    { tag: 'Front View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView5_aowvt2.jpg' },
+    { tag: 'Landscape', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695728/RGV/comView6_vqsybj.jpg' },
+    { tag: 'Landscape', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/comView2_st9ut2.jpg' },
+    { tag: 'Landscape', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView1_eubbrw.jpg' },
     { tag: 'Washroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706798074/RGV/1327552442_gbqpvs.webp' },
     { tag: 'Washroom', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706797842/RGV/1327553651_zzvzqw.webp' },
     { tag: 'Kitchen', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706798010/RGV/1325260447_oorqsv.webp' },
@@ -160,7 +160,7 @@ const Gallery = () => {
 
               <div data-aos="fade-up" onClick={() => { toggleGallery(12) }}>
                 <Image alt='' fill sizes='1' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695724/RGV/frontView1_vba9rx.jpg'} />
-                <span style={{ display: 'none' }}>Front View</span>
+                {/* <span style={{ display: 'none' }}>Front View</span> */}
               </div>
             </section>
             <section className={styles.set1}>
@@ -182,20 +182,20 @@ const Gallery = () => {
           <section className={styles.imgBox4}>
             <div data-aos="fade-up" onClick={() => { toggleGallery(16) }}>
               <Image alt='' fill sizes='1' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView5_aowvt2.jpg'} />
-              <span style={{ display: 'none' }}>Compound View</span>
+              {/* <span style={{ display: 'none' }}>Front View</span> */}
             </div>
             <div data-aos="fade-up" onClick={() => { toggleGallery(17) }}>
               <Image alt='' fill sizes='1' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695728/RGV/comView6_vqsybj.jpg'} />
-              <span style={{ display: 'none' }}>Compound View</span>
+              <span style={{ display: 'none' }}>Landscape</span>
             </div>
             <div data-aos="fade-up" onClick={() => { toggleGallery(18) }}>
               <Image alt='' fill sizes='1' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695726/RGV/comView2_st9ut2.jpg'} />
-              <span style={{ display: 'none' }}>Compound View</span>
+              <span style={{ display: 'none' }}>Landscape</span>
             </div>
 
             <div data-aos="fade-up" onClick={() => { toggleGallery(19) }}>
               <Image alt='' fill sizes='1' src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/comView1_eubbrw.jpg'} />
-              <span style={{ display: 'none' }}>Compound View</span>
+              <span style={{ display: 'none' }}>Landscape</span>
             </div>
           </section>
 

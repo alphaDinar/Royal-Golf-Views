@@ -1,9 +1,7 @@
-const Loading = () => {
-  return ( 
+export default function Loading (){
+  return (
     <section>
-      Big Loader
+      Big Loading
     </section>
-   );
+  )
 }
- 
-export default Loading;

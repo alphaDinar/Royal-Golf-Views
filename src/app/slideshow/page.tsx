@@ -1,9 +1,9 @@
 'use client'
-import { MdArrowBackIos, MdArrowForward, MdArrowForwardIos, MdInfo, MdInfoOutline, MdRadioButtonChecked } from 'react-icons/md';
+import { MdArrowBackIos, MdArrowForward, MdArrowForwardIos,MdInfoOutline, MdRadioButtonChecked } from 'react-icons/md';
 import styles from './slideshow.module.css';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css/pagination';
 import 'swiper/css';
 import Image from 'next/image';
@@ -49,10 +49,10 @@ const SlideShow = () => {
     { tag: 'Pool View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705863007/RGV/IMG_0133_jjmzxm.jpg' },
     { tag: 'Pool View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695727/RGV/poolView1_srgrq0.jpg' },
 
-    { tag: 'Front View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862528/RGV/FrontViewMin_o622y6.jpg' },
+    { tag: 'Entrance', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862528/RGV/FrontViewMin_o622y6.jpg' },
     { tag: 'Garden View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705862653/RGV/GardenViewBig_eos8dk.jpg' },
 
-    { tag: 'Compound View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000711/RGV/IMG_0100_1_vn7dr7.jpg' },
+    { tag: 'Front View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000711/RGV/IMG_0100_1_vn7dr7.jpg' },
     { tag: 'Landscape View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706001866/RGV/IMG_0058_knb4ks.jpg' },
     { tag: 'Landscape View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705999984/RGV/IMG_0097_1_lrdrzi.jpg' },
     { tag: 'Landscape View', src: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1706000145/RGV/IMG_0060_ts1wgj.jpg' },
@@ -70,60 +70,59 @@ const SlideShow = () => {
     }
   }
 
-  const setTarget =(i : number)=>{
+  const setTarget = (i: number) => {
     showSwiper.current.swiper.slideTo(i);
   }
   return (
     <section>
-      <TopNav/>
-    <main className={styles.slideshowBox}>
-      <section className={styles.slideTray}>
-        <div className={styles.infoBox}>
-          <strong className='caps'>Property Features</strong>
-          <article>
-            {featureList.map((feature, i) => (
-              <p key={i} onClick={()=>{setTarget(feature.target)}}>
-                <MdRadioButtonChecked style={{color : 'var(--pass)'}} />
-                <span>{feature.tag}</span>
-                <MdArrowForward/>
-              </p>
-            ))}
-          </article>
+      <TopNav />
+      <main className={styles.slideshowBox}>
+        <section className={styles.slideTray}>
+          <div className={styles.infoBox}>
+            <strong className='caps'>Property Features</strong>
+            <article>
+              {featureList.map((feature, i) => (
+                <p key={i} onClick={() => { setTarget(feature.target) }}>
+                  <MdRadioButtonChecked style={{ color: 'var(--pass)' }} />
+                  <span>{feature.tag}</span>
+                  <MdArrowForward />
+                </p>
+              ))}
+            </article>
 
-          <div className={styles.extra}>
-            <MdInfoOutline />
-            <small>
-              Although full furnished room Features are still fully customizable to suit your preferences.
-            </small>
-            <Link href={'/'}>
-              <button>Inquire now</button>
-            </Link>
+            <div className={styles.extra}>
+              <MdInfoOutline />
+              <small>
+                Although fully furnished, rooms can still be customised to suit one&apos;s preferences
+              </small>
+              <Link href={'/#mapBox'}>
+                <button>Inquire now</button>
+              </Link>
+            </div>
           </div>
-        </div>
-        <Swiper
-          modules={[Autoplay, EffectFade]}
-          // effect={'fade'}
-          loop={true}
-          speed={1000}
-          ref={showSwiper}
-          autoplay={{ delay: 3500, disableOnInteraction: true, pauseOnMouseEnter: true }}
-          className={styles.showSwiper}
-        >
-          {slideList.map((item, i) => (
-            <SwiperSlide key={i}>
-              <div className={styles.slideBox}>
-                <Image fill alt='' src={item.src} sizes='1' />
-                <legend>{item.tag}</legend>
-              </div>
-            </SwiperSlide>
-          ))}
-          <nav>
-            <MdArrowBackIos onClick={showSwiperPrev} />
-            <MdArrowForwardIos onClick={showSwiperNext} />
-          </nav>
-        </Swiper>
-      </section>
-    </main>
+          <Swiper
+            modules={[Autoplay]}
+            loop={true}
+            speed={1000}
+            ref={showSwiper}
+            autoplay={{ delay: 3500, disableOnInteraction: true, pauseOnMouseEnter: true }}
+            className={styles.showSwiper}
+          >
+            {slideList.map((item, i) => (
+              <SwiperSlide key={i}>
+                <div className={styles.slideBox}>
+                  <Image fill alt='' src={item.src} sizes='1' />
+                  <legend>{item.tag}</legend>
+                </div>
+              </SwiperSlide>
+            ))}
+            <nav>
+              <MdArrowBackIos onClick={showSwiperPrev} />
+              <MdArrowForwardIos onClick={showSwiperNext} />
+            </nav>
+          </Swiper>
+        </section>
+      </main>
     </section>
   );
 }

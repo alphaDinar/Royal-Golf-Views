@@ -148,7 +148,7 @@
 }
 
 .brochureBox .imgBox{
-  width: 50%;
+  /* width: 50%; */
   height: 80vh;
   position: relative;
   z-index: 200;

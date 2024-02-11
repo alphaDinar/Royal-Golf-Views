@@ -18,7 +18,7 @@ const Footer = () => {
     <footer id='footerBox' className={styles.footer}>
       <header>
         <div className={styles.logoBox}>
-        <Image fill src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'} alt="" />
+          <Image fill src={'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705012545/RGV/rgvLoader_yutywg.png'} alt="" />
         </div>
         <h4>ROYAL GOLF VIEWS</h4>
       </header>
@@ -27,7 +27,7 @@ const Footer = () => {
           <h3>Apartments</h3>
           <small>Royal Golf Views has apartments and penthouses for sale and rent in Ghana.</small>
           <div>
-            <a>
+            <a href={'https://www.google.com/maps/search/?api=1&query=Royal Golf Views Luxury Apartments, kumasi'} target='_blank'>
               <span>ADDRESS</span>
               <small>34-35 John Owusu Addo Close, Ridge, Kumasi, Ghana</small>
             </a>
@@ -47,11 +47,11 @@ const Footer = () => {
         </article>
         <article data-aos="fade-up">
           <h3>Contact Info</h3>
-          <a>
+          <Link href={'/'}>
             <span className="material-symbols-outlined">MAIL</span>
-            <small>sales@royalgolfviews.online</small>
-          </a>
-          <a>
+            <small>sales@royalgolfviews.com</small>
+          </Link>
+          <a target='_blank' href='https://www.google.com/maps/search/?api=1&query=David Walter Ghana Limited, Accra, Ghana'>
             <span className="material-symbols-outlined">ADDRESS</span>
             <small>AVA House, 3rd Floor C66/2 Kojo Thompson Rd Adabraka, Accra, Ghana</small>
           </a>

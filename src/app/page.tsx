@@ -3,7 +3,7 @@ import styles from './home.module.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdOutline3DRotation, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi, MdPhone, MdMail, MdLocationPin, MdSend } from 'react-icons/md';
+import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdOutlineLink,MdOutline3DRotation, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi, MdPhone, MdMail, MdLocationPin, MdSend } from 'react-icons/md';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css/pagination';
@@ -171,7 +171,7 @@ const Home = () => {
     },
     {
       img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695724/RGV/frontView1_vba9rx.jpg',
-      tag: 'Front View',
+      tag: 'Entrance',
     },
     {
       img: 'https://res.cloudinary.com/dvnemzw0z/image/upload/v1705695725/RGV/commonView1_stspgi.jpg',
@@ -226,7 +226,7 @@ const Home = () => {
     },
     {
       icon: <MdOutlinePool />,
-      tag: 'Pool Area',
+      tag: 'Pool',
     },
     {
       icon: <IoShirtOutline />,
@@ -632,9 +632,10 @@ const Home = () => {
             </div>
             <small>Hours : Weekdays (8 AM - 7PM) Weekends (10 AM - 5PM)</small>
             <article>
-              <Link href={''}><MdPhone />  <span>+233 (0)544 339 762</span></Link>
-              <Link href={''}><MdMail />  <span>sales@royalgolfviews.online</span></Link>
-              <Link href={''}><MdLocationPin />  <span>34-35 John Owusu Addo Close, Ridge, Kumasi, Ghana</span></Link>
+              <Link href={'tel:233544339762'}><MdPhone />  <span>+233 544 339 762</span></Link>
+              <Link href={'mailto:sales@royalgolfviews.com'}><MdMail />  <span>sales@royalgolfviews.com</span></Link>
+              <a target='_blank' href={'https://www.google.com/maps/search/?api=1&query=6.673114815082761, -1.623287897631162'}><MdLocationPin />  <span>34-35 John Owusu Addo Close, Ridge, Kumasi, Ghana</span></a>
+              <Link href={'/'}><MdOutlineLink /> <span>royalgolfviews.com</span></Link>
             </article>
           </section>
           <section className={styles.right}>

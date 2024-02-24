@@ -20,6 +20,9 @@ const ReadBlog = ({ searchParams }: { searchParams: { post: string } }) => {
   const thumbnail = postObj.thumbnail;
   const timestamp = postObj.timestamp;
 
+  console.log(postObj.excerpt.split('•'));
+
+
 
   return (
     <main className={styles.blogBoxHolder}>
@@ -34,15 +37,21 @@ const ReadBlog = ({ searchParams }: { searchParams: { post: string } }) => {
 
         {title ?
           <section className={styles.blogBox}>
-            <div className={styles.currentBlog}>
+            <div className={styles.currentBlog} style={{ height: 'auto' }}>
               <div className={styles.imgBox}>
                 <Image className={styles.bg} alt='topImage' fill sizes='1' src={thumbnail} />
               </div>
               <article>
                 <strong>{title}</strong>
-                <small>
-                  {excerpt}
-                </small>
+                <span>
+                  {excerpt.split('•').map((text: string, i :number) => (
+                    <span key={i}>
+                      <span>•{text}</span>
+                      <br />
+                      <br />
+                    </span>
+                  ))}
+                </span>
                 <p>
                   <Image className={styles.dp} alt='' height={50} width={50} src={authorImage} />
                   <span>

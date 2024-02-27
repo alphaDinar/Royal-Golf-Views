@@ -77,6 +77,7 @@ const Footer = () => {
           </form>
         </article> */}
       </section>
+
       <hr />
 
       <section className={styles.socialBox}>
@@ -90,6 +91,9 @@ const Footer = () => {
           <FaGooglePlusG />
         </p>
       </section>
+      <hr />
+
+      <Link target='_blank' href={'https://www.yotabyt.com/'} className='yotaTag'>Powered By Yotabyt</Link>
     </footer>
   );
 }

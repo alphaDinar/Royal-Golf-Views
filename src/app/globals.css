@@ -198,6 +198,10 @@ h3 sub{
   font-size: 0.5rem;
 }
 
+.yotaTag{
+  color: wheat;
+}
+
 @media all and (max-width : 1300px){
   .managerPage main{
     width: calc(95% - 20px);

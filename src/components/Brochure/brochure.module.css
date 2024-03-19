@@ -1,0 +1,153 @@
+.box {
+  display: grid;
+  grid-template-rows: 4fr 1.5fr 0.7fr;
+  width: 437px;
+  height: 620px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background: white;
+  z-index: 10000;
+}
+
+.imgBox {
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.imgBox img {
+  object-fit: cover;
+}
+
+.logoBox {
+  padding: 0 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.712);
+}
+
+.logoText span {
+  font-size: 1.7rem;
+  font-weight: 400;
+  font-family: 'Pacifico', cursive;
+}
+
+.logoText span:nth-child(2) {
+  color: var(--green);
+}
+
+.logoText span:nth-child(1),
+.logoText span:nth-child(3) {
+  color: var(--blue);
+}
+
+
+.con {
+  display: flex;
+  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 20px;
+  padding: 15px;
+  position: relative;
+}
+
+.con p {
+  display: flex;
+  flex-direction: column;
+}
+
+.con article {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  top: 0;
+  background: white;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 10px;
+  color: gray;
+  color: white;
+  background: black;
+}
+
+.con article span {
+  color: white;
+  font-size: 0.9rem;
+  font-size: 0.8rem;
+}
+
+.spaceBox {
+  color: rgb(84, 84, 84);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 5px;
+  text-align: left;
+}
+
+
+.rentBox {
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+  padding: 5px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+
+.low {
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  align-items: center;
+  border-top: 2px dotted gray;
+}
+
+.low hr {
+  width: 2px;
+  display: none;
+  height: 80%;
+  background: white;
+  background: black;
+}
+
+.low strong {
+  font-size: 2rem;
+}
+
+.low p {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.low p span {
+  display: flex;
+  font-size: 1.1rem;
+  font-weight: 600;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.low p span i {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+@media all and (max-width:500px) {
+  .box {
+    width: 90%;
+  }
+}
+
+@media all and (max-width:400px) {
+  .low {
+    gap: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+}

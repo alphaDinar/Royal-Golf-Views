@@ -1,4 +1,4 @@
-.loaderPage{
+.loaderPage {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,30 +13,28 @@
   align-items: center;
 }
 
-.loaderBox{
-  width: 250px;
-  height: 140px;
+.loaderBox {
   border-radius: 20px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: wheat;
-  /* background: var(--pass); */
+  background: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   flex-direction: column;
-  gap: 1rem;
-  color: white;
   position: relative;
 }
 
-.logoBox{
+.logoBox {
   position: absolute;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   top: -25px;
+  display: none;
 }
 
-.logoBox img{
+.logoBox img {
   animation: rotate 2s linear infinite;
 }
 
@@ -44,21 +42,64 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
 
-.loader{
+.logoText {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  display: inline-block;
+  overflow: hidden;
+  font-size: 1.8rem;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
-.loader legend{
-  display: block;
-  width: 10px;
-  height: 10px;
-  /* background: black; */
-  border-radius: 50%;
-  background: white;
+
+.logoText span {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+
+.logoText span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.logoText span:nth-child(1) {
+  animation: slide-up 3s ease-in-out forwards;
+}
+
+.logoText span:nth-child(2) {
+  animation: slide-up 3s ease-in-out 0.5s forwards;
+}
+
+.logoText span:nth-child(3) {
+  animation: slide-up 3s ease-in-out 1s forwards;
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(-10%);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

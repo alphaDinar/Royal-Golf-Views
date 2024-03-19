@@ -3,7 +3,7 @@ import styles from './home.module.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdOutlineLink,MdOutline3DRotation, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi, MdPhone, MdMail, MdLocationPin, MdSend } from 'react-icons/md';
+import { MdAcUnit, MdArrowBackIosNew, MdArrowForward, MdDesignServices, MdOutlineLink, MdOutline3DRotation, MdFormatQuote, MdHome, MdMenu, MdOutlineCoffeeMaker, MdOutlineElevator, MdOutlineFitnessCenter, MdOutlineMeetingRoom, MdOutlinePool, MdOutlineShower, MdOutlineSupportAgent, MdPersonOutline, MdRadioButtonChecked, MdSportsHandball, MdSupervisedUserCircle, MdTv, MdWater, MdWifi, MdPhone, MdMail, MdLocationPin, MdSend, MdClose, MdOutlineClose } from 'react-icons/md';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css/pagination';
@@ -26,6 +26,7 @@ import { featureList, galleryListA, galleryListB } from '@/external/lists';
 import { FaRegDotCircle } from 'react-icons/fa';
 import { FaFacebookF, FaGoogle, FaInstagram } from 'react-icons/fa6';
 import { HiOutlineCloudDownload } from 'react-icons/hi';
+import Brochure from '@/components/Brochure/Brochure';
 
 interface Post extends Record<string, any> { }
 
@@ -335,7 +336,7 @@ const Home = () => {
               <MdRadioButtonChecked />
               <span>3 bedroom apartments</span>
             </p>
-            <Link href={'/slideshow'}>
+            <Link href={'/vTour'}>
               <span>Explore</span>
             </Link>
           </section>
@@ -344,10 +345,10 @@ const Home = () => {
 
       <section className={styles.brochureBox} style={brochureToggled ? { display: 'flex' } : { display: 'none' }}>
         <section className={styles.sheet} onClick={() => toggleBrochure()}></section>
-        <div className={styles.imgBox}>
-          <legend><HiOutlineCloudDownload /></legend>
-          <Image alt='' fill sizes='1' src={brochure} />
-        </div>
+        <section className={styles.con}>
+          <MdOutlineClose className={styles.tag} onClick={() => toggleBrochure()} />
+          <Brochure />
+        </section>
       </section>
 
       <section className={styles.featureBox}>
@@ -676,6 +677,8 @@ const Home = () => {
         <small>Virtual Tour</small>
       </Link>
 
+
+      {/* <Loader/> */}
       {pageLoaded ? null : <Loader />}
     </main>
   );

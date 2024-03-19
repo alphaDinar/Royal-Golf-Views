@@ -14,7 +14,7 @@
   outline: none;
   text-decoration: none;
   scroll-behavior: smooth;
-  font-family:  'Poppins', Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   font-family: 'Roboto', sans-serif;
   font-family: 'Inter', sans-serif;
   font-family: 'Karla', sans-serif;
@@ -22,54 +22,74 @@
   font-family: 'Raleway', sans-serif;
 }
 
-:root{
-  --pass : #0cd570;
+:root {
+  --pass: #0cd570;
   --theme: #3f4448;
+  --blue: #2F6AAD;
+  --green: #489349;
 }
 
 
-body::-webkit-scrollbar, body > * ::-webkit-scrollbar{
+body::-webkit-scrollbar,
+body>* ::-webkit-scrollbar {
   width: 8px;
   border-radius: 100px;
   background: #3f4448;
 }
-body::-webkit-scrollbar-thumb ,body > * ::-webkit-scrollbar-thumb{
+
+body::-webkit-scrollbar-thumb,
+body>* ::-webkit-scrollbar-thumb {
   border-radius: 100px;
   background: lightgray;
 }
 
-.caps{
-  /* font-family: 'Pacifico', cursive; */
+.caps {
   font-weight: 600;
   font-size: 1.5rem;
-  /* text-decoration: underline; */
 }
-.tagCaps{
+
+.pacify {
+  font-family: 'Pacifico', cursive;
+}
+
+.cash{
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.contain {
+  object-fit: contain;
+}
+
+.tagCaps {
   font-family: 'Alegreya Sans SC', sans-serif;
   font-size: 1.1rem;
 }
 
-.cut, .cut3, .cut6{
+.cut,
+.cut3,
+.cut6 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.cut3{
+
+.cut3 {
   -webkit-line-clamp: 3;
 }
-.cut6{
+
+.cut6 {
   -webkit-line-clamp: 4;
 }
 
-h4 sub{
+h4 sub {
   height: 3px;
   width: 50px;
   display: block;
   background: black;
 }
 
-.swiperNav{
+.swiperNav {
   width: 40px;
   height: 40px;
   background: #000000;
@@ -81,7 +101,7 @@ h4 sub{
   justify-content: center;
 }
 
-.swiperNav svg{
+.swiperNav svg {
   font-size: 1.2rem;
   color: wheat;
   display: flex;
@@ -89,23 +109,25 @@ h4 sub{
   justify-content: center;
 }
 
-h3{
+h3 {
   display: flex;
   flex-direction: column;
 }
-h3 sub{
+
+h3 sub {
   display: block;
   width: 100px;
   height: 4px;
   background: black;
 }
 
-.managerPage{
+.managerPage {
   display: flex;
   justify-content: flex-end;
   background: #2c2c2c;
 }
-.managerPage main{
+
+.managerPage main {
   border-radius: 30px;
   width: calc(75% - 30px);
   height: calc(90vh - 30px);
@@ -120,27 +142,30 @@ h3 sub{
 
 
 
-.managerForm{
+.managerForm {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-.managerForm input, .managerForm textarea{
+
+.managerForm input,
+.managerForm textarea {
   width: calc(100% - 30px);
   background: #F2F2F2;
   padding: 5px 15px;
   border-radius: 10px;
 }
-.managerForm input{
+
+.managerForm input {
   height: 33px;
 }
 
-.managerForm textarea{
+.managerForm textarea {
   resize: none;
   height: 90px;
 }
 
-.managerForm label{
+.managerForm label {
   background: salmon;
   padding: 5px 5px;
   width: 200px;
@@ -149,7 +174,7 @@ h3 sub{
   border-radius: 40px;
 }
 
-.managerForm button{
+.managerForm button {
   background: var(--pass);
   color: white;
   padding: 10px;
@@ -158,19 +183,26 @@ h3 sub{
 
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-      transform: translateY(0);
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
   }
+
   40% {
-      transform: translateY(-20px);
+    transform: translateY(-20px);
   }
+
   60% {
-      transform: translateY(-10px);
+    transform: translateY(-10px);
   }
 }
 
 
-.vTour{
+.vTour {
   position: fixed;
   width: 55px;
   height: 55px;
@@ -190,20 +222,20 @@ h3 sub{
   z-index: 1000;
 }
 
-.vTour svg{
+.vTour svg {
   font-size: 1.5rem;
 }
 
-.vTour small{
+.vTour small {
   font-size: 0.5rem;
 }
 
-.yotaTag{
+.yotaTag {
   color: wheat;
 }
 
-@media all and (max-width : 1300px){
-  .managerPage main{
+@media all and (max-width : 1300px) {
+  .managerPage main {
     width: calc(95% - 20px);
     height: calc(90vh - 20px);
     margin: 10px;
@@ -212,8 +244,8 @@ h3 sub{
   }
 }
 
-@media all and (max-width: 650px){
-  .vTour{
+@media all and (max-width: 650px) {
+  .vTour {
     height: 50px;
     width: 50px;
     bottom: 10px;

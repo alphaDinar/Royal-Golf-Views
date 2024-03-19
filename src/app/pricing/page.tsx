@@ -20,10 +20,14 @@ const Pricing = () => {
 
             <strong>For Rent</strong>
 
-            <p>
+            {/* <p>
               <sup>$</sup>
               <span>250.00</span>
               <small>/per night</small>
+            </p> */}
+            <p>
+              <span style={{fontSize : '1.5rem'}} className='cash'>+233 544 339 762</span>
+              <small></small>
             </p>
           </Link>
           <Link href={'tel:233544339762'} className={styles.price}>
@@ -32,7 +36,7 @@ const Pricing = () => {
             <strong>For Sale</strong>
 
             <p>
-              <span style={{fontSize : '1.5rem'}}>+233 544 339 762</span>
+              <span style={{fontSize : '1.5rem'}} className='cash'>+233 544 339 762</span>
               <small></small>
             </p>
           </Link>

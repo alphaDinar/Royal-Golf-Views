@@ -95,13 +95,18 @@
   width: 100px;
 }
 
-.footer h4 {
+.logoText {
   color: white;
   font-size: 2.5rem;
   font-weight: 400;
   font-family: 'Poppins';
   text-align: center;
   letter-spacing: 1px;
+  display: flex;
+  gap: 1.2rem;
+}
+.logoText span{
+  font-family: 'Pacifico', cursive;
 }
 
 .footer header strong {

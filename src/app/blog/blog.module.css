@@ -136,6 +136,9 @@
 }
 
 @media all and (max-width:650px){
+  .blogCon{
+    align-items: center;
+  }
   .blogs{
     display: flex;
     flex-wrap: wrap;

@@ -62,7 +62,7 @@
   border-radius: 5px;
 }
 
-.inquireBox{
+.inquireBox {
   cursor: pointer;
 }
 
@@ -126,7 +126,7 @@
   border-radius: 8px;
 }
 
-.brochureBox{
+.brochureBox {
   position: fixed;
   top: 0;
   left: 0;
@@ -135,48 +135,39 @@
   z-index: 1000;
   background: rgba(0, 0, 0, 0.47);
 }
-.brochureBox, .brochureBox .con{
+
+.brochureBox,
+.brochureBox .con {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.brochureBox .sheet{
+
+.brochureBox .con {
+  position: relative;
+}
+
+.brochureBox .con .tag {
+  background: tomato;
+  position: absolute;
+  padding: 8px;
+  color: white;
+  right: 0;
+  cursor: pointer;
+  top: 0;
+  z-index: 900000;
+  box-shadow: rgba(169, 189, 209, 0.2) 0px 8px 24px;
+}
+
+.brochureBox .sheet {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 100;
 }
 
-.brochureBox .imgBox{
-  /* width: 50%; */
-  height: 80vh;
-  position: relative;
-  z-index: 200;
-}
 
 
-.brochureBox legend{
-  background: var(--pass);
-  position: absolute;
-  top: -25px;
-  left: calc(50% - 25px);
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border-radius: 50%;
-  z-index: 10;
-}
-.brochureBox legend svg{
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-
-.brochureBox .imgBox img{
-  object-fit: contain;
-}
 
 .featureBox,
 .aboutBox,
@@ -317,6 +308,7 @@
 
 .showBox {
   width: 100%;
+  min-height: 400px;
   display: grid;
   background: #F8F8FF;
   grid-template-columns: 2fr 1.8fr 2fr;
@@ -371,7 +363,7 @@
   height: calc(100% - 40px);
   padding: 20px;
   background: #2A263C;
-  border-radius: 20px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -519,7 +511,7 @@
 }
 
 
-.mapBox{
+.mapBox {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -527,7 +519,7 @@
   background: #F1F3F4;
 }
 
-.mapBox .contactCon{
+.mapBox .contactCon {
   padding-top: 5vh;
   padding-bottom: 5vh;
   width: 80%;
@@ -536,38 +528,42 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.mapBox .contactCon .left{
+.mapBox .contactCon .left {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
+
 /* .mapBox .contactCon .left */
-.mapBox .contactCon .left div{
+.mapBox .contactCon .left div {
   display: flex;
   gap: 0.5rem;
 }
-.mapBox .contactCon .left div svg{
+
+.mapBox .contactCon .left div svg {
   font-size: 1.3rem;
   color: rgb(118, 118, 118);
 }
 
-.mapBox .contactCon .left article{
+.mapBox .contactCon .left article {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.mapBox .contactCon .left article a{
+
+.mapBox .contactCon .left article a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   color: black;
 }
 
-.mapBox .contactCon .right{
+.mapBox .contactCon .right {
   margin-top: auto;
   margin-left: auto;
 }
-.mapBox .contactCon .right form{
+
+.mapBox .contactCon .right form {
   position: relative;
   padding: 20px;
   background: white;
@@ -578,10 +574,11 @@
   border-radius: 10px;
   background: var(--theme);
 }
-.mapBox .contactCon .right form legend{
+
+.mapBox .contactCon .right form legend {
   position: absolute;
   width: 40px;
-  height:40px;
+  height: 40px;
   background: var(--theme);
   border-radius: 50%;
   display: flex;
@@ -593,33 +590,38 @@
   align-items: center;
   justify-content: center;
 }
-.mapBox .contactCon .right form legend svg{
+
+.mapBox .contactCon .right form legend svg {
   font-size: 1.4rem;
   color: wheat;
 }
 
-.mapBox .contactCon .right form div{
+.mapBox .contactCon .right form div {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
-.mapBox .contactCon .right form div span{
+
+.mapBox .contactCon .right form div span {
   color: white;
   font-size: 0.9rem;
 }
-.mapBox .contactCon .right form div input, .mapBox .contactCon .right form div textarea{
+
+.mapBox .contactCon .right form div input,
+.mapBox .contactCon .right form div textarea {
   width: 300px;
   padding: 10px 10px;
   background: var(--theme);
   border: 2px solid wheat;
   color: rgb(249, 234, 208);
 }
-.mapBox .contactCon .right form div textarea{
+
+.mapBox .contactCon .right form div textarea {
   height: 100px;
   resize: none;
 }
 
-.mapBox .contactCon .right form button{
+.mapBox .contactCon .right form button {
   background: wheat;
   padding: 8px;
   font-size: 1.1rem;
@@ -654,33 +656,39 @@
   .aboutBox,
   .facilityBox,
   .blogBox,
-  .testimonialBox, 
-  .mapBox .contactCon
-  {
+  .testimonialBox,
+  .mapBox .contactCon {
     width: calc(100% - 40px);
     padding-right: 20px;
     padding-left: 20px;
   }
 
-  .mapBox .contactCon{
+  .mapBox .contactCon {
     display: flex;
     flex-direction: column;
     gap: 2rem;
     align-items: center;
   }
-  .mapBox .contactCon .left{
+
+  .mapBox .contactCon .left {
     gap: 0.8rem;
   }
-  .mapBox .contactCon .left, .mapBox .contactCon .left > *{
+
+  .mapBox .contactCon .left,
+  .mapBox .contactCon .left>* {
     text-align: center;
   }
-  .mapBox .contactCon .left h3, .mapBox .contactCon .left article{
+
+  .mapBox .contactCon .left h3,
+  .mapBox .contactCon .left article {
     align-items: center;
   }
-  .mapBox .contactCon .left div{
+
+  .mapBox .contactCon .left div {
     justify-content: center;
   }
-  .mapBox .contactCon .right{
+
+  .mapBox .contactCon .right {
     margin: auto;
   }
 
@@ -792,21 +800,30 @@
     grid-template-columns: 1fr;
   }
 
-  .brochureBox .imgBox legend{
+  .brochureBox .imgBox legend {
     top: calc(50% - 25px);
   }
-  .brochureBox .imgBox{
+
+  .brochureBox .imgBox {
     width: 80%;
   }
 
-  .mapBox .contactCon .right{
+  .mapBox .contactCon .right {
     width: 100%;
   }
-  .mapBox .contactCon .right form{
+
+  .mapBox .contactCon .right form {
     width: calc(100% - 40px);
   }
-  .mapBox .contactCon .right form div input, .mapBox .contactCon .right form div textarea{
+
+  .mapBox .contactCon .right form div input,
+  .mapBox .contactCon .right form div textarea {
     width: calc(100% - 20px);
+  }
+
+  .brochureBox .con .tag {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -851,13 +868,15 @@
 }
 
 @media all and (max-width:300px) {
-  .headBoxConNav .logoBox{
+  .headBoxConNav .logoBox {
     width: 50px;
     height: 100%;
   }
+
   .nextBlog .imgBox {
     min-width: 100px;
   }
+
   .headBox {
     height: 55vh;
   }

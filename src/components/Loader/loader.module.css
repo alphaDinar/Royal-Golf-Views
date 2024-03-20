@@ -103,3 +103,9 @@
     transform: translateY(0);
   }
 }
+
+@media all and (max-width:350px){
+  .logoText{
+    font-size: 1.4rem;
+  }
+}

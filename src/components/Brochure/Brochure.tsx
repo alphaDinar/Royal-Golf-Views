@@ -23,7 +23,7 @@ const Brochure = () => {
           <strong className={styles.logoText}><span>Royal</span> <span>Golf</span> <span>Views</span> </strong>
         </p>
         <p>
-          <small style={{ fontSize: '1rem;' }}>Experience Luxury Living at its best.</small>
+          <small style={{ fontSize: '1rem' }}>Experience Luxury Living at its best.</small>
           <sub className={styles.spaceBox}>Spacious <span className="cash">3</span> bedroom apartments in Ridge, Kumasi.</sub>
         </p>
 

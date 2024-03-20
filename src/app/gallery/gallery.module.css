@@ -7,7 +7,7 @@
   gap: 1.5rem;
 }
 
-.galleryCon div{
+.galleryCon div {
   cursor: pointer;
 }
 
@@ -64,10 +64,6 @@
 .set3 div,
 .imgBox4 div {
   position: relative;
-}
-
-.set1 div {
-  height: calc(50% - 0.5rem);
 }
 
 .set1 div,
@@ -208,7 +204,7 @@
   cursor: pointer;
 }
 
-.gallerySwiper{
+.gallerySwiper {
   width: 100%;
   height: 100%;
 }
@@ -231,18 +227,19 @@
 }
 
 @media all and (max-width:900px) {
-  .popup{
+  .popup {
     display: flex;
     flex-direction: column-reverse;
     height: auto;
   }
-  .gallerySwiper{
+
+  .gallerySwiper {
     height: 350px;
   }
 }
 
 @media all and (max-width:450px) {
-  .gallerySwiper{
+  .gallerySwiper {
     height: 250px;
   }
 }
@@ -274,6 +271,9 @@
 
 
 @media all and (max-width:750px) {
+  .imgBoxHolder {
+    margin-bottom: 4vh;
+  }
 
   .imgBox,
   .imgBox2,
@@ -294,6 +294,15 @@
 }
 
 @media all and (max-width:550px) {
+  .imgBoxHolder {
+    margin-bottom: 2vh;
+  }
+
+  .set1,
+  .set2,
+  .set3 {
+    height: 600px;
+  }
 
   .set1 div:nth-child(2),
   .set1 div:nth-child(3) {

@@ -67,11 +67,11 @@ const Gallery = () => {
     gallerySwiper.current.swiper.slidePrev();
   }
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-    })
-  })
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 1000,
+  //   })
+  // })
 
   return (
     <main className={styles.galleryBox}>

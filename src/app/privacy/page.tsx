@@ -97,7 +97,7 @@ const Privacy = () => {
 
           <article>
             <strong>
-              Children's Privacy.
+              Children&apos;s Privacy.
             </strong>
             <span>
               The Website is not intended for children under the age of 13. We do not knowingly collect information from children under 13.

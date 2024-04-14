@@ -17,7 +17,7 @@ const Privacy = () => {
         </header>
 
         <section className={styles.infoBox}>
-          <span>This Privacy Policy describes how Royal Golf Views ("we," "us," or "our") collects, uses, and discloses your information when you use our website (royalgolfviews.com)  or Facebook forms.</span>
+          <span>This Privacy Policy describes how Royal Golf Views (&apos;we,&apos; &apos;us,&apos; or &apos;our&apos;) collects, uses, and discloses your information when you use our website (royalgolfviews.com)  or Facebook forms.</span>
 
           <article>
             <strong>

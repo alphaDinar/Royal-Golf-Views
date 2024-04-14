@@ -1,0 +1,31 @@
+.privacyCon {
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoBox {
+  /* width: 200px; */
+  /* height: 200px; */
+  /* background: salmon; */
+  padding-bottom: 3vh;
+  gap: 2rem;
+}
+
+.infoBox article{
+  gap: 0.5rem;
+}
+.infoBox,.infoBox article,
+.infoBox p, .infoBox small, .infoBox span {
+  display: grid;
+  grid-template-columns: 1fr;
+  font-size: 1rem;
+  /* font-family: 'Poppins', Arial, sans-serif; */
+}
+
+.infoBox span{
+  gap: 0.2rem;
+}

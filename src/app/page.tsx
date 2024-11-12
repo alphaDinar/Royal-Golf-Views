@@ -310,7 +310,6 @@ const Home = () => {
               <Link href={'/blog'} data-aos="fade-down"> <span>Blog</span> </Link>
               <Link href={'/pricing'} data-aos="fade-down"> <span>Pricing</span> </Link>
               <Link href={'#mapBox'} data-aos="fade-down"> <span>Contact</span> </Link>
-              {/* <Link href={''}><span>Virtual Tour</span></Link> */}
               <legend style={{ cursor: 'pointer' }} data-aos="fade-right" onClick={() => toggleBrochure()} > <span>E-Brochure</span> </legend>
               <Link href={'/vTour'} data-aos="fade-down" className={styles.inquireBox}> <span>Virtual Tour</span> </Link>
             </nav>
@@ -572,7 +571,7 @@ const Home = () => {
       </section>
 
 
-      {testimonials.length > 0 ?
+      {/* {testimonials.length > 0 ?
         <section className={styles.testimonialBox}>
           <h4 className='caps'>Testimonials</h4>
           <p style={{ textAlign: 'center' }}>Don&apos;t just take our word for it. Check out what our residents are saying about their experience buying, selling, or renting with Royal Golf Views.</p>
@@ -616,7 +615,7 @@ const Home = () => {
           </Swiper>
         </section>
         : <Waiter />
-      }
+      } */}
 
 
       <section className={styles.mapBox} id='mapBox'>
